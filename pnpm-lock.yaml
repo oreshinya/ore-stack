@@ -38,6 +38,9 @@ importers:
       morgan:
         specifier: ^1.10.1
         version: 1.10.1
+      qs:
+        specifier: ^6.14.0
+        version: 6.14.0
       react:
         specifier: ^19.1.1
         version: 19.1.1
@@ -50,6 +53,9 @@ importers:
       remix-utils:
         specifier: ^8.8.0
         version: 8.8.0(react-router@7.9.1(react-dom@19.1.1(react@19.1.1))(react@19.1.1))(react@19.1.1)
+      valibot:
+        specifier: ^1.1.0
+        version: 1.1.0(typescript@5.9.2)
     devDependencies:
       '@react-router/dev':
         specifier: ^7.9.1
@@ -66,6 +72,9 @@ importers:
       '@types/morgan':
         specifier: ~1.9.10
         version: 1.9.10
+      '@types/qs':
+        specifier: ~6.14.0
+        version: 6.14.0
       '@types/react':
         specifier: ~19.1.13
         version: 19.1.13
@@ -2199,6 +2208,14 @@ packages:
 
   valibot@0.41.0:
     resolution: {integrity: sha512-igDBb8CTYr8YTQlOKgaN9nSS0Be7z+WRuaeYqGf3Cjz3aKmSnqEmYnkfVjzIuumGqfHpa3fLIvMEAfhrpqN8ng==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  valibot@1.1.0:
+    resolution: {integrity: sha512-Nk8lX30Qhu+9txPYTwM0cFlWLdPFsFr6LblzqIySfbZph9+BFsAHsNvHOymEviUepeIW6KFHzpX8TKhbptBXXw==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -4663,6 +4680,10 @@ snapshots:
   utils-merge@1.0.1: {}
 
   valibot@0.41.0(typescript@5.9.2):
+    optionalDependencies:
+      typescript: 5.9.2
+
+  valibot@1.1.0(typescript@5.9.2):
     optionalDependencies:
       typescript: 5.9.2
 
