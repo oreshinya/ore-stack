@@ -14,7 +14,9 @@
     "clean:dist": "rm -rf ./dist",
     "typecheck": "react-router typegen && tsc",
     "typesync:run": "typesync",
-    "typesync:ci": "typesync --dry=fail"
+    "typesync:ci": "typesync --dry=fail",
+    "lint:fix": "biome check --write .",
+    "lint:ci": "biome ci ."
   },
   "dependencies": {
     "@react-router/express": "^7.9.1",
@@ -35,6 +37,7 @@
     "valibot": "^1.1.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.4",
     "@react-router/dev": "^7.9.1",
     "@react-router/remix-routes-option-adapter": "^7.9.1",
     "@types/compression": "~1.8.1",
