@@ -1,4 +1,5 @@
 import "the-new-css-reset/css/reset.css";
+import classNames from "classnames/bind";
 import {
   isRouteErrorResponse,
   Links,
@@ -10,7 +11,6 @@ import {
 import type { Route } from "./+types/root";
 import { useHook } from "./hook";
 import styles from "./styles.module.css";
-import classNames from "classnames/bind";
 
 const cx = classNames.bind(styles);
 
@@ -42,9 +42,7 @@ export default function App() {
   return <Outlet />;
 }
 
-export function ErrorBoundary({
-  error,
-}: Route.ErrorBoundaryProps) {
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   let status = 500;
   if (isRouteErrorResponse(error)) {
     status = error.status;

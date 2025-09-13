@@ -1,7 +1,7 @@
 import { reactRouter } from "@react-router/dev/vite";
 import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
 import environment from "vite-plugin-environment";
+import tsconfigPaths from "vite-tsconfig-paths";
 import { ASSET_HOST } from "./env";
 
 export default defineConfig({
@@ -11,6 +11,6 @@ export default defineConfig({
     environment({
       // Environment variables to include in the bundle.
     }),
-    tsconfigPaths()
+    tsconfigPaths(),
   ],
 });

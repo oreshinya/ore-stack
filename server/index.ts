@@ -6,7 +6,7 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 
-import { HOST, BIND_ADDRESS, NODE_ENV, PORT } from "~env";
+import { BIND_ADDRESS, HOST, NODE_ENV, PORT } from "~env";
 
 const isProduction = NODE_ENV === "production";
 
@@ -111,7 +111,7 @@ app.all(
     getLoadContext: (_, res) => ({
       cspNonce: res.locals["cspNonce"],
     }),
-    // @ts-ignore
+    // @ts-expect-error
     build: viteDevServer
       ? () => viteDevServer.ssrLoadModule("virtual:react-router/server-build")
       : // @ts-ignore
