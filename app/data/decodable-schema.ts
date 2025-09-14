@@ -3,11 +3,11 @@ import * as v from "valibot";
 import { NODE_ENV } from "~env";
 import { failure, success } from "./result";
 
-export type AnyBaseSchema =
+export type DecodableSchema =
   | v.BaseSchema<unknown, unknown, v.BaseIssue<unknown>>
   | v.BaseSchemaAsync<unknown, unknown, v.BaseIssue<unknown>>;
 
-export async function decodeWithLogging<TSchema extends AnyBaseSchema>(
+export async function decodeWithLogging<TSchema extends DecodableSchema>(
   schema: TSchema,
   data: unknown,
 ) {
@@ -26,7 +26,7 @@ export async function decodeWithLogging<TSchema extends AnyBaseSchema>(
   return success(result.output);
 }
 
-export async function decodeForm<TSchema extends AnyBaseSchema>(
+export async function decodeForm<TSchema extends DecodableSchema>(
   request: Request,
   schema: TSchema,
 ) {
@@ -43,7 +43,7 @@ export async function decodeForm<TSchema extends AnyBaseSchema>(
   return decodeWithLogging(schema, form);
 }
 
-export async function decodeJson<TSchema extends AnyBaseSchema>(
+export async function decodeJson<TSchema extends DecodableSchema>(
   request: Request,
   schema: TSchema,
 ) {
@@ -51,7 +51,7 @@ export async function decodeJson<TSchema extends AnyBaseSchema>(
   return decodeWithLogging(schema, json);
 }
 
-export function decodeQuery<TSchema extends AnyBaseSchema>(
+export function decodeQuery<TSchema extends DecodableSchema>(
   request: Request,
   schema: TSchema,
 ) {
