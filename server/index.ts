@@ -111,10 +111,9 @@ app.all(
     getLoadContext: (_, res) => ({
       cspNonce: res.locals["cspNonce"],
     }),
-    // @ts-expect-error
     build: viteDevServer
       ? () => viteDevServer.ssrLoadModule("virtual:react-router/server-build")
-      : // @ts-ignore
+      : // @ts-expect-error
         await import("../build/server/index.js"),
   }),
 );

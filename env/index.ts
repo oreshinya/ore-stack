@@ -9,3 +9,7 @@ export const BIND_ADDRESS = process.env["BIND_ADDRESS"] || "127.0.0.1";
 export const PORT = num(process.env["PORT"] || "3000");
 
 export const ASSET_HOST = process.env["ASSET_HOST"] || "/";
+
+export const DB_URL = process.env["DB_URL"] || "file:libsql/local.db";
+
+export const DB_TOKEN = process.env["DB_TOKEN"];
