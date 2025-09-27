@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { reactRouter } from "@react-router/dev/vite";
 import { defineConfig } from "vite";
 import environment from "vite-plugin-environment";
@@ -13,4 +14,9 @@ export default defineConfig({
     }),
     tsconfigPaths(),
   ],
+  test: {
+    globals: true,
+    mockReset: true,
+    reporters: ["dot"],
+  },
 });

@@ -16,7 +16,11 @@
     "typesync:run": "typesync",
     "typesync:ci": "typesync --dry=fail",
     "lint:fix": "biome check --write .",
-    "lint:ci": "biome ci ."
+    "lint:ci": "biome ci .",
+    "test": "run-s test:clean test:setup test:run",
+    "test:clean": "rm -f libsql/test.db",
+    "test:setup": "NODE_ENV=test DB_URL=file:libsql/test.db tsx tasks/db.ts up",
+    "test:run": "NODE_ENV=test DB_URL=file:libsql/test.db vitest run"
   },
   "dependencies": {
     "@libsql/kysely-libsql": "^0.4.1",
@@ -59,7 +63,8 @@
     "typesync": "^0.14.3",
     "vite": "^7.1.5",
     "vite-plugin-environment": "^1.1.3",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.4"
   },
   "packageManager": "pnpm@10.16.0+sha512.8066e7b034217b700a9a4dbb3a005061d641ba130a89915213a10b3ca4919c19c037bec8066afdc559b89635fdb806b16ea673f2468fbb28aabfa13c53e3f769"
 }
