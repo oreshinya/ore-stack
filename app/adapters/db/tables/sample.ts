@@ -11,10 +11,10 @@ export type SampleId = v.InferOutput<typeof SampleIdSchema>;
 
 export const SampleIdSchema = v.pipe(v.string(), v.brand("SampleId"));
 
-type Eb = ExpressionBuilder<{ samples: SampleTable }, "samples">;
+export type SampleEb = ExpressionBuilder<{ samples: SampleTable }, "samples">;
 
 export const scope = {
-  active(eb: Eb) {
+  active(eb: SampleEb) {
     return eb("active", "=", true);
   },
 };
