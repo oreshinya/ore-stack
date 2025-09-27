@@ -6,16 +6,17 @@ import type {
 } from "~/adapters/db/tables/table-base";
 import { generateId } from "~/data/id";
 import { success } from "~/data/result";
-import type { Sample } from "./entity";
+import { type Sample, validateSample } from "./entity";
 
 export async function createSample(
   c: DBClient,
   params: CreateParams<SampleTable>,
 ) {
-  // TODO: validate params here...
   const id = generateId<SampleId>();
   const now = new Date().toISOString();
   const record = { id, ...params, createdAt: now, updatedAt: now };
+  const result = validateSample(record);
+  if (!result.success) return result;
   await c.insertInto("samples").values(record).executeTakeFirstOrThrow();
   return success(record);
 }
@@ -25,12 +26,14 @@ export async function updateSample(
   current: Sample,
   params: UpdateParams<SampleTable>,
 ) {
-  // TODO: validate params here...
   const values = { ...params, updatedAt: new Date().toISOString() };
+  const record = { ...current, ...values };
+  const result = validateSample(record);
+  if (!result.success) return result;
   await c
     .updateTable("samples")
     .set(values)
     .where("id", "=", current.id)
     .executeTakeFirstOrThrow();
-  return success({ ...current, ...values });
+  return success(record);
 }

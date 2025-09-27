@@ -3,7 +3,7 @@ import type { {{pascalCase(singular(t))}}Table } from "~/adapters/db/tables/{{ke
 
 export type {{pascalCase(singular(t))}} = Selectable<{{pascalCase(singular(t))}}Table>;
 
-export function encode({{kebabCase(singular(t))}}: {{pascalCase(singular(t))}}) {
+export function encode{{pascalCase(singular(t))}}({{kebabCase(singular(t))}}: {{pascalCase(singular(t))}}) {
   const { id } = {{kebabCase(singular(t))}};
   return { id };
 }
