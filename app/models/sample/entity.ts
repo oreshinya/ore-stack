@@ -12,6 +12,6 @@ export function validateSample(sample: Pick<Sample, "name" | "active">) {
 }
 
 export function encodeSample(sample: Sample) {
-  const { id } = sample;
-  return { id };
+  const { id, name, active } = sample;
+  return { id, name, active };
 }

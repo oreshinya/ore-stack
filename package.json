@@ -46,6 +46,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.2.4",
+    "@picocss/pico": "^2.1.1",
     "@react-router/dev": "^7.9.1",
     "@react-router/remix-routes-option-adapter": "^7.9.1",
     "@types/compression": "~1.8.1",
@@ -58,7 +59,6 @@
     "npm-run-all": "^4.1.5",
     "remix-flat-routes": "^0.8.5",
     "sscg": "^1.0.2",
-    "the-new-css-reset": "^1.11.3",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "typesync": "^0.14.3",

@@ -1,4 +1,4 @@
-import "the-new-css-reset/css/reset.css";
+import "@picocss/pico";
 import classNames from "classnames/bind";
 import {
   isRouteErrorResponse,
@@ -27,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <div className={cx("content")}>{children}</div>
+        <main className={cx("content", "container")}>{children}</main>
         <div className={cx("spinner", { shown: isPending })}>
           <progress />
         </div>
