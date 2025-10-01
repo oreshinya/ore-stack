@@ -1,0 +1,16 @@
+.env
+.envrc
+.dockerignore
+.git
+.github
+.gitignore
+.node-version
+.typesyncrc
+Dockerfile
+README.md
+biome.json
+node_modules
+templates
+build
+dist
+libsql
