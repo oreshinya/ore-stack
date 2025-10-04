@@ -32,10 +32,12 @@ export function validateSample(sample: Pick<Sample, "name" | "active">) {
   return success(sample);
 }
 
-export function encodeSample(sample: Sample) {
+export function encodeToPublicSample(sample: Sample) {
   const { id, name, active } = sample;
   return { id, name, active };
 }
+
+export type PublicSample = ReturnType<typeof encodeToPublicSample>;
 ```
 
 ## query.ts
