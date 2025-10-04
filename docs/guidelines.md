@@ -50,8 +50,8 @@ React Router (Framework mode), libSQL + Kysely, Valibot, Vitest, Biome, TypeScri
 
 ## Layer-Specific Rules
 
-- **Adapters** (`app/adapters/`): @docs/adapters.md
-- **Data** (`app/data/`): @docs/data.md
-- **Models** (`app/models/`): @docs/models.md
-- **Routes** (`app/routes/`): @docs/routes.md
-- **Components** (`app/components/`): @docs/components.md
+- **Adapters** (`app/adapters/`): @adapters.md
+- **Data** (`app/data/`): @data.md
+- **Models** (`app/models/`): @models.md
+- **Routes** (`app/routes/`): @routes.md
+- **Components** (`app/components/`): @components.md
