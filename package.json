@@ -28,7 +28,7 @@
     "@react-router/node": "^7.9.1",
     "@react-router/serve": "^7.9.1",
     "classnames": "^2.5.1",
-    "close-with-grace": "^2.2.0",
+    "close-with-grace": "^2.3.0",
     "compression": "^1.8.1",
     "express": "^5.1.0",
     "helmet": "^8.1.0",
