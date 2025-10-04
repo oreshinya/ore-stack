@@ -15,6 +15,7 @@ const filesToRemove = [
   "app/adapters/db/tables/sample.ts",
   "app/models/sample",
   "app/routes/samples",
+  "LICENSE",
 ];
 
 const filesToUpdate: Array<{
@@ -128,12 +129,9 @@ const main = async () => {
     console.log("✓ Removed this script itself");
   }
 
-  console.log("\nNext steps:");
   if (shouldRemovePicoCss) {
-    console.log("  1. Run: pnpm install (to remove @picocss/pico)");
-    console.log("  2. Run: pnpm typecheck && pnpm lint:fix && pnpm test");
-  } else {
-    console.log("  1. Run: pnpm typecheck && pnpm lint:fix && pnpm test");
+    console.log("\nNext step:");
+    console.log("  Run: pnpm install (to remove @picocss/pico)");
   }
 };
 
