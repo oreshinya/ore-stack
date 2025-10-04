@@ -29,6 +29,12 @@ See `docs/` for detailed guidelines:
 - [docs/routes.md](docs/routes.md) - HTTP routing and UI
 - [docs/components.md](docs/components.md) - Reusable UI components
 
+## Usage
+
+```bash
+pnpm dlx create-react-router@latest my-react-router-app --template https://github.com/oreshinya/ore-stack
+```
+
 ## Setup
 
 ### Install dependencies
