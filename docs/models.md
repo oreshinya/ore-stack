@@ -1,4 +1,4 @@
-# Models Layer Rules
+# Models Rules
 
 ## Responsibilities
 

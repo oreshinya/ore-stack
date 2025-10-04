@@ -1,4 +1,4 @@
-# Routes Layer Rules
+# Routes Rules
 
 ## Responsibilities
 
@@ -113,7 +113,7 @@ export default function SampleNew({ loaderData, actionData }: Route.ComponentPro
 
 ## hook.tsx / styles.module.css
 
-Follow the same rules as the Components layer. See @docs/components.md for details.
+Follow the same rules as Components. See @docs/components.md for details.
 
 ## Decoding
 

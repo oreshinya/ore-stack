@@ -1,4 +1,4 @@
-# Components Layer Rules
+# Components Rules
 
 ## Responsibilities
 

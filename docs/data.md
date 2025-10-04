@@ -1,4 +1,4 @@
-# Data Layer Rules
+# Data Rules
 
 ## Responsibilities
 
@@ -27,7 +27,14 @@ app/data/
 Return business logic errors (validation failures, etc.) using the Result type.
 
 ```typescript
-const result = validateSample(sample);
+import { success, failure } from "~/data/result";
+
+function validate(name: string) {
+  if (!name) return failure("Name is required.");
+  return success(name);
+}
+
+const result = validate(sample);
 if (!result.success) return result;
 ```
 

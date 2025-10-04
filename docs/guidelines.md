@@ -2,7 +2,7 @@
 
 This project follows a layered architecture pattern.
 
-## Layer Structure
+## Core Modules
 
 - **Data** (`app/data/`): Shared data structures and utilities
 - **Adapters** (`app/adapters/`): External system connections and configurations
@@ -48,7 +48,7 @@ This project follows a layered architecture pattern.
 
 React Router (Framework mode), libSQL + Kysely, Valibot, Vitest, Biome, TypeScript (strict)
 
-## Layer-Specific Rules
+## Module-Specific Rules
 
 - **Adapters** (`app/adapters/`): @adapters.md
 - **Data** (`app/data/`): @data.md

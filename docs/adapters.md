@@ -1,4 +1,4 @@
-# Adapters Layer Rules
+# Adapters Rules
 
 ## Responsibilities
 
