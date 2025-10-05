@@ -61,4 +61,4 @@ const id = generateId<SampleId>();
 - `decodeForm(request, schema)` - Form data
 - `decodeJson(request, schema)` - JSON body
 - `decodeQuery(request, schema)` - Query parameters
-- `decodeWithLogging(schema, params)` - URL parameters (logs in development)
+- `decodeWithLogging(schema, params)` - URL parameters

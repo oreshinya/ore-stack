@@ -113,7 +113,7 @@ export default function SampleNew({ loaderData, actionData }: Route.ComponentPro
 
 ## hook.tsx / styles.module.css
 
-Follow the same rules as Components. See @docs/components.md for details.
+Follow the same rules as Components. See @components.md for details.
 
 ## Decoding
 
@@ -129,7 +129,7 @@ Convert external data to TypeScript types.
 Convert server-side data to client-safe format.
 
 ```typescript
-return { samples: samples.map(encodeSample) };
+return { samples: samples.map(encodeToPublicSample) };
 ```
 
 ## Error Handling
