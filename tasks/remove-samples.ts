@@ -15,6 +15,7 @@ const filesToRemove = [
   "app/adapters/db/tables/sample.ts",
   "app/models/sample",
   "app/routes/samples",
+  "migrations/20250927T062238-create-sample.ts",
   "LICENSE",
 ];
 
