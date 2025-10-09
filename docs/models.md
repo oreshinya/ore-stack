@@ -101,10 +101,10 @@ export async function updateSample(c: DBClient, current: Sample, params: UpdateP
 
 ```bash
 # For database-backed models
-sscg db-model -r user -o app/models/user
+pnpm sscg db-model -r user -o app/models/user
 
 # For other data sources
-sscg model -r user -o app/models/user
+pnpm sscg model -r user -o app/models/user
 ```
 
 ## Best Practices

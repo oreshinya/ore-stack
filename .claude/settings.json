@@ -3,7 +3,8 @@
     "allow": [
       "Bash(pnpm typecheck:*)",
       "Bash(pnpm lint:fix:*)",
-      "Bash(pnpm test:*)"
+      "Bash(pnpm test:*)",
+      "Bash(pnpm sscg:*)"
     ],
     "deny": [],
     "ask": []

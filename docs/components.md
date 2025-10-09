@@ -102,6 +102,6 @@ Use **kebab-case** for class names. Combine class names with `classnames/bind`.
 ## Template (sscg)
 
 ```bash
-sscg component -r sample-card -o app/components/sample-card
+pnpm sscg component -r sample-card -o app/components/sample-card
 ```
 

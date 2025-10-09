@@ -57,6 +57,6 @@ export const scope = {
 ## Template (sscg)
 
 ```bash
-sscg table -r user -o app/adapters/db/tables
+pnpm sscg table -r user -o app/adapters/db/tables
 ```
 

@@ -145,5 +145,5 @@ if (!result.success) return data400(result.message);
 ## Template (sscg)
 
 ```bash
-sscg route -r users-new -o app/routes/users/new
+pnpm sscg route -r users-new -o app/routes/users/new
 ```
