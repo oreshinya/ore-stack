@@ -43,16 +43,16 @@ pnpm dlx create-react-router@latest my-react-router-app --template https://githu
 pnpm install
 ```
 
+### Remove sample code
+
+```bash
+pnpm tsx tasks/remove-samples.ts
+```
+
 ### Run database migrations
 
 ```bash
 pnpm tsx tasks/db.ts up
-```
-
-### Remove sample code (optional)
-
-```bash
-pnpm tsx tasks/remove-samples.ts
 ```
 
 ## Development
