@@ -109,8 +109,8 @@ importers:
         specifier: ^0.8.5
         version: 0.8.5
       sscg:
-        specifier: ^1.0.2
-        version: 1.0.2
+        specifier: ^1.1.0
+        version: 1.1.0
       tsx:
         specifier: ^4.20.6
         version: 4.20.6
@@ -1731,9 +1731,9 @@ packages:
     resolution: {integrity: sha512-S3UwM3yj5mtUSEfP41UZmt/0SCoVYUcU1rkXv+BQ5Ig8ndL4sPoJNBUJERafdPb5jjHJGuMgytgKvKIf58XNBw==}
     engines: {node: '>= 0.10.0'}
 
-  meow@13.2.0:
-    resolution: {integrity: sha512-pxQJQzB6djGPXh08dacEloMFopsOqGVRKFPYvPOt9XDZ1HasbgDZA74CJGreSU4G3Ak7EFJGoiH2auq+yXISgA==}
-    engines: {node: '>=18'}
+  meow@14.0.0:
+    resolution: {integrity: sha512-JhC3R1f6dbspVtmF3vKjAWz1EVIvwFrGGPLSdU6rK79xBwHWTuHoLnRX/t1/zHS1Ch1Y2UtIrih7DAHuH9JFJA==}
+    engines: {node: '>=20'}
 
   merge-descriptors@1.0.3:
     resolution: {integrity: sha512-gaNvAS7TZ897/rVaZ0nMtAyxNyi/pdbjbAwUpFQpN70GqnVfOiXpeUUMKRBmzXaSQ8DdTX4/0ms62r2K+hE6mQ==}
@@ -2336,8 +2336,8 @@ packages:
   spdx-license-ids@3.0.22:
     resolution: {integrity: sha512-4PRT4nh1EImPbt2jASOKHX7PB7I+e4IWNLvkKFDxNhJlfjbYlleYQh285Z/3mPTHSAK/AvdMmw5BNNuYH8ShgQ==}
 
-  sscg@1.0.2:
-    resolution: {integrity: sha512-9pqjlMxU5whwjPV3skHqDCbEBC7s5TgDipIBXBEc1jSXuHoe4l7dehwx4AnpBuyg5VSw8/PrrSGtwcggUCBgpA==}
+  sscg@1.1.0:
+    resolution: {integrity: sha512-vDi0F02LEJJdN7+Kxa8li4hrAK1Sa4h6thnVhoogH7UWSBZgkh+PmeFoTvatNPdu56BLdBJ1eVw6UWJ7jBbbGw==}
     hasBin: true
 
   ssri@12.0.0:
@@ -4490,7 +4490,7 @@ snapshots:
 
   memorystream@0.3.1: {}
 
-  meow@13.2.0: {}
+  meow@14.0.0: {}
 
   merge-descriptors@1.0.3: {}
 
@@ -5120,11 +5120,11 @@ snapshots:
 
   spdx-license-ids@3.0.22: {}
 
-  sscg@1.0.2:
+  sscg@1.1.0:
     dependencies:
       chalk: 5.6.2
       change-case: 5.4.4
-      meow: 13.2.0
+      meow: 14.0.0
       pluralize: 8.0.0
 
   ssri@12.0.0:
