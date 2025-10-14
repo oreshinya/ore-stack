@@ -7,7 +7,7 @@ export default function SampleIndex({ loaderData }: Route.ComponentProps) {
   const { samples } = loaderData;
 
   return (
-    <div>
+    <div className="container">
       <nav>
         <ul>
           <li>

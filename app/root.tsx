@@ -27,7 +27,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-        <div className={cx("content", "container")}>{children}</div>
+        <div className={cx("content")}>{children}</div>
         <div className={cx("spinner", { shown: isPending })}>
           <progress />
         </div>

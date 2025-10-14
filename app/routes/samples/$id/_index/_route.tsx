@@ -7,7 +7,7 @@ export default function SampleShow({ loaderData }: Route.ComponentProps) {
   const { sample } = loaderData;
 
   return (
-    <div>
+    <div className="container">
       <nav>
         <ul>
           <li>

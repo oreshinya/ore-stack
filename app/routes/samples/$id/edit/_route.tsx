@@ -11,7 +11,7 @@ export default function SampleEdit({
   const { sample } = loaderData;
 
   return (
-    <div>
+    <div className="container">
       <nav>
         <ul>
           <li>

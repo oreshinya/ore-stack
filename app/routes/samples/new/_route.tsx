@@ -5,7 +5,7 @@ export { action } from "./action";
 
 export default function SampleNew({ actionData }: Route.ComponentProps) {
   return (
-    <div>
+    <div className="container">
       <nav>
         <ul>
           <li>

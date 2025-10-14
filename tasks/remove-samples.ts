@@ -42,19 +42,6 @@ const picoCssUpdates: Array<{
     replace: "",
   },
   {
-    path: "app/root.tsx",
-    search: /className={cx\(([^)]*)"container"[^)]*\)}/,
-    replace: (_match: string, group1: string) => {
-      // Remove "container" and clean up commas
-      const cleaned = group1
-        .split(",")
-        .map((s: string) => s.trim())
-        .filter((s: string) => s !== '"container"' && s !== "")
-        .join(", ");
-      return `className={cx(${cleaned})}`;
-    },
-  },
-  {
     path: "package.json",
     search: /^\s*"@picocss\/pico":\s*"[^"]+",\n/m,
     replace: "",
