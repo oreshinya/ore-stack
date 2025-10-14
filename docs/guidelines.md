@@ -37,12 +37,24 @@ This project follows a layered architecture pattern.
 
 - Location: same directory as the test target (`*.test.ts`)
 
+## Database Migrations
+
+Use `pnpm tsx tasks/db.ts` for all migration operations:
+
+- `pnpm tsx tasks/db.ts create <name>` - Create a new migration file
+- `pnpm tsx tasks/db.ts up` - Run a pending migration
+- `pnpm tsx tasks/db.ts latest` - Run all pending migrations
+- `pnpm tsx tasks/db.ts down` - Revert the latest migration
+
+**Never create migration files manually.**
+
 ## Implementation Flow
 
 1. Understand requirements and plan necessary tasks
 2. Implement (generate files with sscg if needed)
-3. Write tests
-4. Run `pnpm typecheck && pnpm lint:fix && pnpm test`
+3. Create database migrations if needed (`pnpm tsx tasks/db.ts create <name>`)
+4. Write tests
+5. Run `pnpm typecheck && pnpm lint:fix && pnpm test`
 
 ## Tech Stack
 
