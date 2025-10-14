@@ -9,11 +9,11 @@ Handle React Router route definitions.
 ```
 app/routes/
 └── {path}/              # URL path as-is
-    ├── _route.tsx       # UI component
+    ├── _route.tsx       # HTML structure
     ├── loader.ts        # Data loading (GET)
     ├── action.ts        # Data updates (POST)
-    ├── hook.tsx         # Custom hook (optional)
-    └── styles.module.css # Styles (optional)
+    ├── hook.tsx         # Behavior (React hooks)
+    └── styles.module.css # Styling
 ```
 
 ### Example
@@ -88,7 +88,7 @@ export async function action({ request }: Route.ActionArgs) {
 
 ## _route.tsx
 
-Define the UI component for the route.
+Define the HTML structure for the route.
 
 ### Implementation Pattern
 
@@ -113,7 +113,7 @@ export default function SampleNew({ loaderData, actionData }: Route.ComponentPro
 
 ## hook.tsx / styles.module.css
 
-Follow the same rules as Components. See @components.md for details.
+Separate structure, behavior, and styling into respective files. Place all React hooks logic in `hook.tsx`. See @components.md for details.
 
 ## Decoding
 

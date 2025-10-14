@@ -13,10 +13,12 @@ Provide reusable UI components.
 ```
 app/components/
 └── {component-name}/    # kebab-case
-    ├── index.tsx        # Component implementation
-    ├── hook.tsx         # Custom hook (optional)
-    └── styles.module.css # Styles (optional)
+    ├── index.tsx        # HTML structure
+    ├── hook.tsx         # Behavior (React hooks)
+    └── styles.module.css # Styling
 ```
+
+Separate structure, behavior, and styling into respective files. Place all React hooks logic in `hook.tsx`.
 
 ## index.tsx
 
