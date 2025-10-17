@@ -52,7 +52,7 @@ pnpm tsx tasks/remove-samples.ts
 ### Run database migrations
 
 ```bash
-pnpm tsx tasks/db.ts up
+pnpm tsx tasks/db.ts latest
 ```
 
 ## Development
