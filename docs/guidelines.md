@@ -41,14 +41,16 @@ This project follows a layered architecture pattern.
 
 Use `pnpm tsx tasks/db.ts` for all migration operations:
 
-- `pnpm tsx tasks/db.ts create <name>` - Create a new migration file
+- `pnpm tsx tasks/db.ts create <name>` - Create a new migration file (e.g., `create create-samples-table`)
 - `pnpm tsx tasks/db.ts up` - Run a pending migration
 - `pnpm tsx tasks/db.ts latest` - Run all pending migrations
 - `pnpm tsx tasks/db.ts down` - Revert the latest migration
 
-Never create migration files manually.
+Rules:
 
-In migration files, use snake_case for all database identifiers (table names, column names, index names, etc.).
+- Never create migration files manually
+- Migration file names: use kebab-case
+- Database identifiers in migration files: use snake_case (table names, column names, index names, etc.)
 
 ## Implementation Flow
 
