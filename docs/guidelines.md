@@ -36,6 +36,7 @@ This project follows a layered architecture pattern.
 ## Testing
 
 - Location: same directory as the test target (`*.test.ts`)
+- Prefer `assert` over `expect`
 
 ## Database Migrations
 
