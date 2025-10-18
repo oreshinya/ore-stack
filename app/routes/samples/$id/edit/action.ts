@@ -32,7 +32,7 @@ export async function action({ request, params }: Route.ActionArgs) {
     return data400(decodeResult.message);
   }
 
-  const result = await updateSample(db, sample, decodeResult.value);
+  const result = await updateSample(db, decodeResult.value, sample);
   if (!result.success) {
     return data400(result.message);
   }
