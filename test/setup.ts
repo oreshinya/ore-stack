@@ -15,4 +15,8 @@ const migrator = new Migrator({
   allowUnorderedMigrations: true,
 });
 
-await migrator.migrateToLatest();
+const { error } = await migrator.migrateToLatest();
+
+if (error) {
+  throw error;
+}
