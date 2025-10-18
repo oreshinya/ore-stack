@@ -18,5 +18,6 @@ export default defineConfig({
     globals: true,
     mockReset: true,
     reporters: ["dot"],
+    setupFiles: ["./test/setup.ts"],
   },
 });
