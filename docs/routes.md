@@ -88,22 +88,25 @@ export async function action({ request }: Route.ActionArgs) {
 
 ## _route.tsx
 
-Define the HTML structure for the route.
+Define the HTML structure for the route. React hooks must be in `hook.tsx`, not in `_route.tsx`.
 
 ### Implementation Pattern
 
 ```typescript
 import { Form } from "react-router";
 import type { Route } from "./+types/_route";
+import { useHook } from "./hook";
 
 export { loader } from "./loader";
 export { action } from "./action";
 
 export default function SampleNew({ loaderData, actionData }: Route.ComponentProps) {
+  const { value, handleChange } = useHook();
+
   return (
     <Form method="post">
       {actionData?.message && <p>{actionData.message}</p>}
-      <input type="text" name="name" required />
+      <input type="text" name="name" value={value} onChange={handleChange} required />
       <input type="checkbox" name="active" />
       <button type="submit">Create</button>
     </Form>

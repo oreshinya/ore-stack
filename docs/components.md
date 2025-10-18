@@ -18,12 +18,15 @@ app/components/
     └── styles.module.css # Styling
 ```
 
-Separate structure, behavior, and styling into respective files. Place all React hooks logic in `hook.tsx`.
+Separate structure, behavior, and styling into respective files.
 
 ## index.tsx
 
+Define the component structure. React hooks must be in `hook.tsx`, not in `index.tsx`.
+
 ```typescript
 import type { ComponentProps } from "react";
+import { useHook } from "./hook";
 
 interface Props extends ComponentProps<"button"> {
   variant?: "primary" | "secondary";
@@ -31,10 +34,12 @@ interface Props extends ComponentProps<"button"> {
 }
 
 export function Button({ variant = "primary", loading, children, ...props }: Props) {
+  const { isDisabled } = useHook();
+
   return (
     <button
       {...props}
-      disabled={loading || props.disabled}
+      disabled={loading || props.disabled || isDisabled}
       className={`button button--${variant}`}
     >
       {loading ? "Loading..." : children}
