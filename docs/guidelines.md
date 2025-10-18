@@ -48,7 +48,7 @@ Use `pnpm tsx tasks/db.ts` for all migration operations:
 
 Never create migration files manually.
 
-Use snake_case for all database identifiers in migration files (table names, column names, index names, etc.).
+In migration files, use snake_case for all database identifiers (table names, column names, index names, etc.).
 
 ## Implementation Flow
 
