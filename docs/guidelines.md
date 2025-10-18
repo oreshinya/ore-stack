@@ -46,7 +46,9 @@ Use `pnpm tsx tasks/db.ts` for all migration operations:
 - `pnpm tsx tasks/db.ts latest` - Run all pending migrations
 - `pnpm tsx tasks/db.ts down` - Revert the latest migration
 
-**Never create migration files manually.**
+Never create migration files manually.
+
+Use snake_case for all database identifiers in migration files (table names, column names, index names, etc.).
 
 ## Implementation Flow
 
