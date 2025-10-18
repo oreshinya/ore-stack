@@ -19,7 +19,7 @@
     "lint:ci": "biome ci .",
     "test": "run-s test:clean test:setup test:run",
     "test:clean": "rm -f libsql/test.db",
-    "test:setup": "NODE_ENV=test DB_URL=file:libsql/test.db tsx tasks/db.ts up",
+    "test:setup": "NODE_ENV=test DB_URL=file:libsql/test.db tsx tasks/db.ts latest",
     "test:run": "NODE_ENV=test DB_URL=file:libsql/test.db vitest run"
   },
   "dependencies": {
