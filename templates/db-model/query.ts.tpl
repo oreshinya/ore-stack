@@ -4,7 +4,7 @@ import type { {{pascalCase(singular(t))}}Id } from "~/adapters/db/tables/{{kebab
 export async function find{{pascalCase(singular(t))}}ById(c: DBClient, id: {{pascalCase(singular(t))}}Id) {
   return await c
     .selectFrom("{{camelCase(plural(t))}}")
-    .selectAll()
+    .selectAll("{{camelCase(plural(t))}}")
     .where("id", "=", id)
     .executeTakeFirst();
 }
@@ -12,7 +12,7 @@ export async function find{{pascalCase(singular(t))}}ById(c: DBClient, id: {{pas
 export async function find{{pascalCase(singular(t))}}ByIdOrThrow(c: DBClient, id: {{pascalCase(singular(t))}}Id) {
   return await c
     .selectFrom("{{camelCase(plural(t))}}")
-    .selectAll()
+    .selectAll("{{camelCase(plural(t))}}")
     .where("id", "=", id)
     .executeTakeFirstOrThrow();
 }
