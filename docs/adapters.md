@@ -32,7 +32,8 @@ Separate directories by external system (e.g., `db/`, `github/`, `slack/`, `s3/`
 ## Table Definition (`app/adapters/db/tables/*.ts`)
 
 ```typescript
-import type { ExpressionBuilder } from "kysely";
+import { type Expression, type ExpressionBuilder, expressionBuilder } from "kysely";
+import { jsonObjectFrom } from "kysely/helpers/sqlite";
 import * as v from "valibot";
 import type { TableBase } from "./table-base";
 
@@ -46,6 +47,25 @@ export type SampleId = v.InferOutput<typeof SampleIdSchema>;
 export const SampleIdSchema = v.pipe(v.string(), v.brand("SampleId"));
 
 export type SampleEb = ExpressionBuilder<{ samples: SampleTable }, "samples">;
+
+// Relation helper: Load nested data using jsonObjectFrom
+// Usage: .select((eb) => [withSample(eb.ref("orders.sampleId")).as("sample")])
+// Note: Always use explicit .select([...]) - SQLite does not support selectAll() in json_object
+export function withSample(sampleId: Expression<SampleId>) {
+  const eb: SampleEb = expressionBuilder();
+  return jsonObjectFrom(
+    eb
+      .selectFrom("samples")
+      .select([
+        "samples.id",
+        "samples.name",
+        "samples.active",
+        "samples.createdAt",
+        "samples.updatedAt",
+      ])
+      .whereRef("samples.id", "=", sampleId),
+  ).$notNull();
+}
 
 export const scope = {
   active: () => (eb: SampleEb) => eb("samples.active", "=", true),
