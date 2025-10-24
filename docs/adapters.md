@@ -48,9 +48,7 @@ export const SampleIdSchema = v.pipe(v.string(), v.brand("SampleId"));
 export type SampleEb = ExpressionBuilder<{ samples: SampleTable }, "samples">;
 
 export const scope = {
-  active(eb: SampleEb) {
-    return eb("active", "=", true);
-  },
+  active: () => (eb: SampleEb) => eb("samples.active", "=", true),
 };
 ```
 
