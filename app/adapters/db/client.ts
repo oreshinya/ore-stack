@@ -1,5 +1,5 @@
 import { LibsqlDialect, type LibsqlDialectConfig } from "@libsql/kysely-libsql";
-import { CamelCasePlugin, Kysely } from "kysely";
+import { CamelCasePlugin, Kysely, ParseJSONResultsPlugin } from "kysely";
 import { DB_TOKEN, DB_URL, NODE_ENV } from "~env";
 import type { Database } from "./database";
 
@@ -10,6 +10,6 @@ export type DBClient = Kysely<Database>;
 
 export const db: DBClient = new Kysely<Database>({
   dialect: new LibsqlDialect(config),
-  plugins: [new CamelCasePlugin()],
+  plugins: [new CamelCasePlugin(), new ParseJSONResultsPlugin()],
   log: NODE_ENV === "development" ? ["query"] : [],
 });
