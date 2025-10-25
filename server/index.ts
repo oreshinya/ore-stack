@@ -6,7 +6,15 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 
-import { BIND_ADDRESS, HOST, NODE_ENV, PORT } from "~env";
+import {
+  BASIC_AUTH_PASSWORD,
+  BASIC_AUTH_USER,
+  BIND_ADDRESS,
+  HOST,
+  NODE_ENV,
+  PORT,
+} from "~env";
+import { basicAuth } from "./basic-auth";
 
 const isProduction = NODE_ENV === "production";
 
@@ -40,6 +48,10 @@ app.use(morgan("tiny"));
 app.get("/health", (_, res) => {
   return res.sendStatus(200);
 });
+
+if (BASIC_AUTH_USER && BASIC_AUTH_PASSWORD) {
+  app.use(basicAuth(BASIC_AUTH_USER, BASIC_AUTH_PASSWORD));
+}
 
 app.use(
   helmet({

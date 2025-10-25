@@ -13,3 +13,7 @@ export const ASSET_HOST = process.env["ASSET_HOST"] || "/";
 export const DB_URL = process.env["DB_URL"] || "file:libsql/local.db";
 
 export const DB_TOKEN = process.env["DB_TOKEN"];
+
+export const BASIC_AUTH_USER = process.env["BASIC_AUTH_USER"];
+
+export const BASIC_AUTH_PASSWORD = process.env["BASIC_AUTH_PASSWORD"];
