@@ -65,6 +65,15 @@ Rules:
 
 React Router (Framework mode), libSQL + Kysely, Valibot, Vitest, Biome, TypeScript (strict)
 
+## Static Assets
+
+Assets are stored in `app/assets/`.
+
+Directory structure:
+- `app/assets/icons/` - UI icons
+- `app/assets/logos/` - Logo images
+- `app/assets/illustrations/` - Illustration images
+
 ## Module-Specific Rules
 
 - **Adapters** (`app/adapters/`): @adapters.md
