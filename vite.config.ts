@@ -15,7 +15,6 @@ export default defineConfig({
     tsconfigPaths(),
   ],
   test: {
-    globals: true,
     mockReset: true,
     reporters: ["dot"],
     setupFiles: ["./test/setup.ts"],

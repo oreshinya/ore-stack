@@ -1,3 +1,4 @@
+import { assert, test } from "vitest";
 import { db } from "~/adapters/db/client";
 import { createSample, updateSample } from "./command";
 
