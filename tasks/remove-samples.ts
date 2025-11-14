@@ -2,16 +2,6 @@ import * as fs from "node:fs/promises";
 import * as path from "node:path";
 import * as readline from "node:readline/promises";
 
-interface FileUpdate {
-  path: string;
-  search: string | RegExp;
-  replace: string;
-}
-
-function isNodeError(err: unknown): err is NodeJS.ErrnoException {
-  return err instanceof Error;
-}
-
 const FILES_TO_REMOVE = [
   "app/adapters/db/tables/sample.ts",
   "app/models/sample",
@@ -20,7 +10,7 @@ const FILES_TO_REMOVE = [
   "LICENSE",
 ];
 
-const FILES_TO_UPDATE: Array<FileUpdate> = [
+const FILES_TO_UPDATE = [
   {
     path: "app/adapters/db/database.ts",
     search: /^.*$/s,
@@ -28,7 +18,7 @@ const FILES_TO_UPDATE: Array<FileUpdate> = [
   },
 ];
 
-const PICO_CSS_UPDATES: Array<FileUpdate> = [
+const PICO_CSS_UPDATES = [
   {
     path: "app/root.tsx",
     search: /^import "@picocss\/pico";\n/m,
@@ -40,58 +30,6 @@ const PICO_CSS_UPDATES: Array<FileUpdate> = [
     replace: "",
   },
 ];
-
-async function promptUser(query: string) {
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-  });
-
-  try {
-    return await rl.question(query);
-  } finally {
-    rl.close();
-  }
-}
-
-async function removeFiles(files: Array<string>, baseDir: string) {
-  for (const file of files) {
-    const fullPath = path.join(baseDir, file);
-    try {
-      const stats = await fs.stat(fullPath);
-      if (stats.isDirectory()) {
-        await fs.rm(fullPath, { recursive: true, force: true });
-        console.log(`✓ Removed directory: ${file}`);
-      } else {
-        await fs.unlink(fullPath);
-        console.log(`✓ Removed file: ${file}`);
-      }
-    } catch (err) {
-      if (!isNodeError(err) || err.code !== "ENOENT") {
-        throw err;
-      }
-    }
-  }
-}
-
-async function updateFiles(updates: Array<FileUpdate>, baseDir: string) {
-  for (const update of updates) {
-    const fullPath = path.join(baseDir, update.path);
-    try {
-      const content = await fs.readFile(fullPath, "utf-8");
-      const newContent = content.replace(update.search, update.replace);
-
-      if (content !== newContent) {
-        await fs.writeFile(fullPath, newContent, "utf-8");
-        console.log(`✓ Updated: ${update.path}`);
-      }
-    } catch (err) {
-      if (!isNodeError(err) || err.code !== "ENOENT") {
-        throw err;
-      }
-    }
-  }
-}
 
 async function main() {
   const baseDir = process.cwd();
@@ -134,6 +72,69 @@ async function main() {
     console.log("Next step:");
     console.log("  Run: pnpm install (to remove @picocss/pico)");
   }
+}
+
+async function promptUser(query: string) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+
+  try {
+    return await rl.question(query);
+  } finally {
+    rl.close();
+  }
+}
+
+async function removeFiles(files: Array<string>, baseDir: string) {
+  for (const file of files) {
+    const fullPath = path.join(baseDir, file);
+    try {
+      const stats = await fs.stat(fullPath);
+      if (stats.isDirectory()) {
+        await fs.rm(fullPath, { recursive: true, force: true });
+        console.log(`✓ Removed directory: ${file}`);
+      } else {
+        await fs.unlink(fullPath);
+        console.log(`✓ Removed file: ${file}`);
+      }
+    } catch (err) {
+      if (!isNodeError(err) || err.code !== "ENOENT") {
+        throw err;
+      }
+    }
+  }
+}
+
+async function updateFiles(
+  updates: Array<{
+    path: string;
+    search: RegExp;
+    replace: string;
+  }>,
+  baseDir: string,
+) {
+  for (const update of updates) {
+    const fullPath = path.join(baseDir, update.path);
+    try {
+      const content = await fs.readFile(fullPath, "utf-8");
+      const newContent = content.replace(update.search, update.replace);
+
+      if (content !== newContent) {
+        await fs.writeFile(fullPath, newContent, "utf-8");
+        console.log(`✓ Updated: ${update.path}`);
+      }
+    } catch (err) {
+      if (!isNodeError(err) || err.code !== "ENOENT") {
+        throw err;
+      }
+    }
+  }
+}
+
+function isNodeError(err: unknown): err is NodeJS.ErrnoException {
+  return err instanceof Error;
 }
 
 main().catch(console.error);
