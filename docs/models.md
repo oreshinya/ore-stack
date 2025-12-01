@@ -9,14 +9,14 @@ Handle domain logic and data access.
 ```
 app/models/
 └── {entity}/           # Entity name (singular)
-    ├── entity.ts       # Entity type definitions and related functions
+    ├── entity.ts       # Entity type definitions and pure functions
     ├── query.ts        # Read operations
     └── command.ts      # Write operations
 ```
 
 ## entity.ts
 
-Place entity type definitions and related functions.
+Place entity type definitions and pure functions (no side effects).
 
 ```typescript
 import type { Selectable } from "kysely";
