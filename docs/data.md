@@ -4,13 +4,13 @@
 
 Provide shared data structures and utilities across the application.
 
-Place data-type-focused utilities that are not dependent on specific domains or layers.
+Utilities organized by data type, not by domain or layer.
 
 **Currently includes**:
 - Result type (success/failure representation)
 - HTTP response helpers
 - ID generation logic
-- Validation helpers
+- Decode helpers
 
 ## Directory Structure
 
@@ -19,7 +19,7 @@ app/data/
 ├── result.ts            # Result type
 ├── response.ts          # HTTP response helpers
 ├── id.ts               # ID generation
-└── decodable-schema.ts # Validation helpers
+└── decodable-schema.ts # Decode helpers
 ```
 
 ## Result Type (`result.ts`)
