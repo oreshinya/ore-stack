@@ -6,18 +6,21 @@ updates:
       interval: "weekly"
     cooldown:
       default-days: 7
+    open-pull-requests-limit: 30
   - package-ecosystem: "github-actions"
     directory: "/.github/actions/install"
     schedule:
       interval: "weekly"
     cooldown:
       default-days: 7
+    open-pull-requests-limit: 30
   - package-ecosystem: "npm"
     directory: "/"
     schedule:
       interval: "weekly"
     cooldown:
       default-days: 7
+    open-pull-requests-limit: 30
     groups:
       react:
         patterns:
