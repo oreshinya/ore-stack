@@ -1,3 +1,9 @@
+---
+name: routes-guide
+description: Routes module patterns for HTTP handling. Use when creating loaders, actions, or route components.
+user-invocable: false
+---
+
 # Routes Rules
 
 ## Responsibilities
@@ -116,7 +122,7 @@ export default function SampleNew({ loaderData, actionData }: Route.ComponentPro
 
 ## hook.tsx / styles.module.css
 
-Separate structure, behavior, and styling into respective files. Place all React hooks logic in `hook.tsx`. See @components.md for details.
+Separate structure, behavior, and styling into respective files. Place all React hooks logic in `hook.tsx`. See components-guide skill for details.
 
 ## Decoding
 
@@ -145,8 +151,11 @@ if (!sample) throw res404();
 if (!result.success) return data400(result.message);
 ```
 
-## Template (sscg)
+## Scaffolding
+
+Generate route files:
 
 ```bash
-pnpm sscg route -r users-new -o app/routes/users/new
+pnpm sscg route -r <name> -o app/routes/<path>
 ```
+

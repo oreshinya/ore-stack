@@ -1,3 +1,9 @@
+---
+name: models-guide
+description: Models module patterns for domain logic and data access. Use when creating entities, queries, or commands.
+user-invocable: false
+---
+
 # Models Rules
 
 ## Responsibilities
@@ -133,18 +139,30 @@ export async function asyncValidateSample(
 }
 ```
 
-## Template (sscg)
-
-```bash
-# For database-backed models
-pnpm sscg db-model -r user -o app/models/user
-
-# For other data sources
-pnpm sscg model -r user -o app/models/user
-```
-
 ## Best Practices
 
 - **Result type consistency**: Always return validation errors using Result type and propagate to upper layers (Routes)
 - **Validation**: Implement business rules beyond data source constraints
 - **Encoding**: Exclude sensitive information from client responses
+
+## ID Generation
+
+Generate ULID (time-sortable, 26 characters).
+
+```typescript
+import { generateId } from "~/data/id";
+
+const id = generateId<SampleId>();
+```
+
+## Scaffolding
+
+Generate model files:
+
+```bash
+# For database-backed models
+pnpm sscg db-model -r <name> -o app/models/<name>
+
+# For other data sources
+pnpm sscg model -r <name> -o app/models/<name>
+```

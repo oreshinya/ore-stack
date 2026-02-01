@@ -1,3 +1,9 @@
+---
+name: components-guide
+description: Components module patterns for reusable UI. Use when creating React components with hooks and styles.
+user-invocable: false
+---
+
 # Components Rules
 
 ## Responsibilities
@@ -106,9 +112,11 @@ export function Button({ variant = "primary", children }: Props) {
 
 Use **kebab-case** for class names. Combine class names with `classnames/bind`.
 
-## Template (sscg)
+## Scaffolding
+
+Generate component files:
 
 ```bash
-pnpm sscg component -r sample-card -o app/components/sample-card
+pnpm sscg component -r <name> -o app/components/<name>
 ```
 

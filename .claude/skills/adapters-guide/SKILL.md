@@ -1,3 +1,9 @@
+---
+name: adapters-guide
+description: Adapters module patterns and table definitions. Use when working with database tables, external APIs, or adapter configurations.
+user-invocable: false
+---
+
 # Adapters Rules
 
 ## Responsibilities
@@ -72,9 +78,13 @@ export const scope = {
 };
 ```
 
-## Template (sscg)
+## Scaffolding
+
+Generate table definition:
 
 ```bash
-pnpm sscg table -r user -o app/adapters/db/tables
+pnpm sscg table -r <name> -o app/adapters/db/tables
 ```
+
+After generation, register the new table in `app/adapters/db/database.ts`.
 
