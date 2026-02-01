@@ -20,14 +20,7 @@ A React Router template with structured architecture.
 
 ## Documentation
 
-See `docs/` for detailed guidelines:
-
-- [docs/guidelines.md](docs/guidelines.md) - Overall structure and coding conventions
-- [docs/adapters.md](docs/adapters.md) - External system connections
-- [docs/data.md](docs/data.md) - Shared data structures
-- [docs/models.md](docs/models.md) - Domain logic and data access
-- [docs/routes.md](docs/routes.md) - HTTP routing and UI
-- [docs/components.md](docs/components.md) - Reusable UI components
+See [CLAUDE.md](CLAUDE.md) for coding conventions and architecture patterns.
 
 ## Usage
 
