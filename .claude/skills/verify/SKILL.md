@@ -1,7 +1,7 @@
 ---
 name: verify
 description: Run type checking, linting, and tests to verify code quality
-user-invocable: false
+user-invocable: true
 ---
 
 Verify code quality by running the following checks.

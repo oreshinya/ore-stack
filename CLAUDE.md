@@ -58,6 +58,10 @@ if (!result.success) return result;
 - Location: same directory as the test target (`*.test.ts`)
 - Prefer `assert` over `expect`
 
+## Skills
+
+When planning, reading, creating, or modifying files under `app/adapters/`, `app/models/`, `app/routes/`, or `app/components/`, invoke the corresponding guide skill (`adapters-guide`, `models-guide`, `routes-guide`, `components-guide`) to follow project patterns. For tasks spanning multiple modules, invoke all relevant skills.
+
 ## Static Assets
 
 Assets are stored in `app/assets/`.

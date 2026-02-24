@@ -1,7 +1,7 @@
 ---
 name: create-migration
 description: Create a new database migration
-user-invocable: false
+user-invocable: true
 ---
 
 Create a migration for $ARGUMENTS.

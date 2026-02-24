@@ -1,6 +1,6 @@
 ---
 name: components-guide
-description: Components module patterns for reusable UI. Use when creating React components with hooks and styles.
+description: Components module patterns for reusable UI. Invoke when planning, reading, creating, or modifying anything under app/components/. Covers component structure, hook.tsx, and CSS modules.
 user-invocable: false
 ---
 

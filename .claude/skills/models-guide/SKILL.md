@@ -1,6 +1,6 @@
 ---
 name: models-guide
-description: Models module patterns for domain logic and data access. Use when creating entities, queries, or commands.
+description: Models module patterns for domain logic and data access. Invoke when planning, reading, creating, or modifying anything under app/models/. Covers entity types, query functions, command functions, and validation.
 user-invocable: false
 ---
 

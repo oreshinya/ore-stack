@@ -1,6 +1,6 @@
 ---
 name: routes-guide
-description: Routes module patterns for HTTP handling. Use when creating loaders, actions, or route components.
+description: Routes module patterns for HTTP handling. Invoke when planning, reading, creating, or modifying anything under app/routes/. Covers loaders, actions, _route.tsx, hook.tsx, and form decoding.
 user-invocable: false
 ---
 

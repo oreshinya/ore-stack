@@ -1,6 +1,6 @@
 ---
 name: adapters-guide
-description: Adapters module patterns and table definitions. Use when working with database tables, external APIs, or adapter configurations.
+description: Adapters module patterns and table definitions. Invoke when planning, reading, creating, or modifying anything under app/adapters/. Covers DB table definitions, external API clients, and adapter configurations.
 user-invocable: false
 ---
 
