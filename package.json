@@ -21,9 +21,9 @@
   },
   "dependencies": {
     "@libsql/kysely-libsql": "^0.4.1",
-    "@react-router/express": "^7.13.0",
-    "@react-router/node": "^7.13.0",
-    "@react-router/serve": "^7.13.0",
+    "@react-router/express": "^7.13.1",
+    "@react-router/node": "^7.13.1",
+    "@react-router/serve": "^7.13.1",
     "classnames": "^2.5.1",
     "close-with-grace": "^2.5.0",
     "compression": "^1.8.1",
@@ -36,7 +36,7 @@
     "qs": "^6.15.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router": "^7.13.0",
+    "react-router": "^7.13.1",
     "remix-utils": "^9.0.1",
     "ulidx": "^2.4.1",
     "valibot": "^1.2.0"
@@ -44,8 +44,8 @@
   "devDependencies": {
     "@biomejs/biome": "2.4.4",
     "@picocss/pico": "^2.1.1",
-    "@react-router/dev": "^7.13.0",
-    "@react-router/remix-routes-option-adapter": "^7.13.0",
+    "@react-router/dev": "^7.13.1",
+    "@react-router/remix-routes-option-adapter": "^7.13.1",
     "@types/compression": "~1.8.1",
     "@types/express": "~5.0.6",
     "@types/morgan": "~1.9.10",
