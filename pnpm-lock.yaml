@@ -60,8 +60,8 @@ importers:
         specifier: ^7.13.1
         version: 7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
       remix-utils:
-        specifier: ^9.0.1
-        version: 9.0.1(@standard-schema/spec@1.1.0)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
+        specifier: ^9.2.0
+        version: 9.2.0(@standard-schema/spec@1.1.0)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)
       ulidx:
         specifier: ^2.4.1
         version: 2.4.1
@@ -2063,8 +2063,8 @@ packages:
     engines: {node: '>=16.6.0'}
     hasBin: true
 
-  remix-utils@9.0.1:
-    resolution: {integrity: sha512-u3CmayaYTin/zsjHom7t2CR+A5uWnNnkq7B1ifFtDZknuHeKnldx2BGyNx3uXliIHEOv+a1c8oqi7MIqVypRqg==}
+  remix-utils@9.2.0:
+    resolution: {integrity: sha512-QFrgQQz4lSoZ3KkwN314ctIVR9XEXJlu/AWUzvo/KqqZ0FS2vij6D9Folh3QlcLuCBSmPTDDhf0cDhY8D1FcUw==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       '@edgefirst-dev/batcher': ^1.0.0
@@ -4708,7 +4708,7 @@ snapshots:
       fs-extra: 11.3.3
       minimatch: 10.1.1
 
-  remix-utils@9.0.1(@standard-schema/spec@1.1.0)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4):
+  remix-utils@9.2.0(@standard-schema/spec@1.1.0)(react-router@7.13.1(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4):
     dependencies:
       type-fest: 4.41.0
     optionalDependencies:
