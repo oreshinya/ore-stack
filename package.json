@@ -17,7 +17,11 @@
     "typesync:ci": "typesync --dry=fail",
     "lint:fix": "biome check --write .",
     "lint:ci": "biome ci .",
-    "test": "NODE_ENV=test DB_URL=:memory: vitest run"
+    "test": "NODE_ENV=test DB_URL=:memory: vitest run",
+    "db:up": "tsx tasks/db.ts up && tsx tasks/dump-schema.ts",
+    "db:down": "tsx tasks/db.ts down && tsx tasks/dump-schema.ts",
+    "db:create": "tsx tasks/db.ts create",
+    "db:latest": "tsx tasks/db.ts latest && tsx tasks/dump-schema.ts"
   },
   "dependencies": {
     "@libsql/kysely-libsql": "^0.4.1",

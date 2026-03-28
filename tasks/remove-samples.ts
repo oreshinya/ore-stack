@@ -7,6 +7,7 @@ const FILES_TO_REMOVE = [
   "app/models/sample",
   "app/routes/samples",
   "migrations/20250927T062238-create-sample.ts",
+  "schema.sql",
   "LICENSE",
 ];
 

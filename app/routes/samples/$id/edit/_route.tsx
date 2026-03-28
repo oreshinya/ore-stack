@@ -45,7 +45,7 @@ export default function SampleEdit({
               <input
                 type="checkbox"
                 name="active"
-                defaultChecked={sample.active}
+                defaultChecked={!!sample.active}
               />
               Active
             </label>

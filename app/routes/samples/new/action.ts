@@ -10,7 +10,7 @@ const FormSchema = v.object({
   name: v.string(),
   active: v.pipe(
     v.optional(v.picklist(["on", "off"]), "off"),
-    v.transform((value) => value === "on"),
+    v.transform((value): 0 | 1 => (value === "on" ? 1 : 0)),
   ),
 });
 

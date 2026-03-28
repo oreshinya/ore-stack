@@ -4,7 +4,7 @@ import type { TableBase } from "./table-base";
 
 export interface SampleTable extends TableBase<SampleId> {
   name: string;
-  active: boolean;
+  active: 0 | 1;
 }
 
 export type SampleId = v.InferOutput<typeof SampleIdSchema>;
@@ -14,5 +14,5 @@ export const SampleIdSchema = v.pipe(v.string(), v.brand("SampleId"));
 export type SampleEb = ExpressionBuilder<{ samples: SampleTable }, "samples">;
 
 export const scope = {
-  active: () => (eb: SampleEb) => eb("samples.active", "=", true),
+  active: () => (eb: SampleEb) => eb("samples.active", "=", 1),
 };
