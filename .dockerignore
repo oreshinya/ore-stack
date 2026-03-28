@@ -1,6 +1,7 @@
+.claude
+.dockerignore
 .env
 .envrc
-.dockerignore
 .git
 .github
 .gitignore
@@ -14,5 +15,4 @@ templates
 build
 dist
 libsql
-CLAUDE.md
 docs

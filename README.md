@@ -14,13 +14,8 @@ A React Router template with structured architecture.
 - [Vitest](https://vitest.dev/)
 - [Biome](https://biomejs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Claude Code](https://claude.com/product/claude-code)
 - [GitHub Actions](https://github.com/features/actions)
 - [Docker](https://www.docker.com/)
-
-## Documentation
-
-See [CLAUDE.md](CLAUDE.md) for coding conventions and architecture patterns.
 
 ## Usage
 
