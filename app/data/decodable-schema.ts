@@ -32,13 +32,22 @@ export async function decodeForm<TSchema extends DecodableSchema>(
 ) {
   const formData = await request.formData();
 
-  const form = Object.fromEntries(
-    [...formData.keys()].map((key) => {
-      if (key.endsWith("[]")) return [key.slice(0, -2), formData.getAll(key)];
+  const obj: Record<string, FormDataEntryValue | Array<FormDataEntryValue>> =
+    {};
+  for (const [key, value] of formData.entries()) {
+    const existing = obj[key];
+    if (existing != null) {
+      if (Array.isArray(existing)) {
+        existing.push(value);
+      } else {
+        obj[key] = [existing, value];
+      }
+    } else {
+      obj[key] = value;
+    }
+  }
 
-      return [key, formData.get(key)];
-    }),
-  );
+  const form = qs.parse(obj as Record<string, string>);
 
   return decodeWithLogging(schema, form);
 }
