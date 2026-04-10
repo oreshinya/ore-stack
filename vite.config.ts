@@ -1,6 +1,5 @@
-/// <reference types="vitest/config" />
 import { reactRouter } from "@react-router/dev/vite";
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import environment from "vite-plugin-environment";
 import tsconfigPaths from "vite-tsconfig-paths";
 import { ASSET_HOST } from "./env";
