@@ -1,4 +1,4 @@
-import "@picocss/pico";
+import "@picocss/pico/css/pico.css";
 import classNames from "classnames/bind";
 import {
   isRouteErrorResponse,

@@ -22,7 +22,7 @@ const FILES_TO_UPDATE = [
 const PICO_CSS_UPDATES = [
   {
     path: "app/root.tsx",
-    search: /^import "@picocss\/pico";\n/m,
+    search: /^import "@picocss\/pico\/css\/pico\.css";\n/m,
     replace: "",
   },
   {
