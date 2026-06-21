@@ -1,13 +1,10 @@
-import crypto from "node:crypto";
 import { createRequestHandler } from "@react-router/express";
 import closeWithGrace from "close-with-grace";
 import compression from "compression";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
-import { RouterContextProvider } from "react-router";
 
-import { cspNonceContext } from "~/load-contexts/csp-nonce";
 import {
   BASIC_AUTH_PASSWORD,
   BASIC_AUTH_USER,
@@ -93,40 +90,10 @@ app.use((req, res, next) => {
   next();
 });
 
-// Generate nonce for CSP
-app.use((_, res, next) => {
-  res.locals["cspNonce"] = crypto.randomBytes(16).toString("hex");
-  next();
-});
-
-app.use(
-  helmet.contentSecurityPolicy({
-    useDefaults: false,
-    directives: {
-      "default-src": helmet.contentSecurityPolicy.dangerouslyDisableDefaultSrc,
-      "base-uri": ["'none'"],
-      "object-src": ["'none'"],
-      "script-src": [
-        // @ts-expect-error
-        (_, res) => `'nonce-${res.locals.cspNonce}'`,
-        "'unsafe-inline'",
-        "'strict-dynamic'",
-        "https:",
-        "http:",
-      ],
-    },
-  }),
-);
-
 // handle SSR requests
 app.all(
   "/{*splat}",
   createRequestHandler({
-    getLoadContext: (_, res) => {
-      const context = new RouterContextProvider();
-      context.set(cspNonceContext, res.locals["cspNonce"]);
-      return context;
-    },
     build: viteDevServer
       ? () => viteDevServer.ssrLoadModule("virtual:react-router/server-build")
       : // @ts-expect-error
