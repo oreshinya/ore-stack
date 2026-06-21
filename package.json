@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:server": "tsx ./server/index.ts",
+    "dev:server": "tsx --conditions=development ./server/index.ts",
     "start:server": "node ./dist/server-index.js",
     "build": "run-p build:*",
     "build:rr": "react-router build",
