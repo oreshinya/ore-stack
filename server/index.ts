@@ -5,7 +5,9 @@ import compression from "compression";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import { RouterContextProvider } from "react-router";
 
+import { cspNonceContext } from "~/load-contexts/csp-nonce";
 import {
   BASIC_AUTH_PASSWORD,
   BASIC_AUTH_USER,
@@ -120,9 +122,11 @@ app.use(
 app.all(
   "/{*splat}",
   createRequestHandler({
-    getLoadContext: (_, res) => ({
-      cspNonce: res.locals["cspNonce"],
-    }),
+    getLoadContext: (_, res) => {
+      const context = new RouterContextProvider();
+      context.set(cspNonceContext, res.locals["cspNonce"]);
+      return context;
+    },
     build: viteDevServer
       ? () => viteDevServer.ssrLoadModule("virtual:react-router/server-build")
       : // @ts-expect-error
