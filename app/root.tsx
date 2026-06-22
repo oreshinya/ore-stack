@@ -24,7 +24,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="mobile-web-app-capable" content="yes" />
         <Meta />
-        <Links />
+        <Links nonce={nonce} />
       </head>
       <body>
         <div className={cx("content")}>{children}</div>

@@ -11,7 +11,8 @@ export type CreateParams<Table> = Omit<
   "id" | "createdAt" | "updatedAt"
 >;
 
-export type UpdateParams<Table> = Omit<
-  Updateable<Table>,
-  "id" | "createdAt" | "updatedAt"
+type StripUndefined<T> = { [K in keyof T]?: Exclude<T[K], undefined> };
+
+export type UpdateParams<Table> = StripUndefined<
+  Omit<Updateable<Table>, "id" | "createdAt" | "updatedAt">
 >;
