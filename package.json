@@ -46,7 +46,7 @@
     "valibot": "^1.4.1"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.0",
+    "@biomejs/biome": "2.5.1",
     "@picocss/pico": "^2.1.1",
     "@react-router/dev": "^8.0.1",
     "@react-router/remix-routes-option-adapter": "^8.0.1",
