@@ -1,4 +1,5 @@
-import { createRequestHandler } from "@react-router/express";
+import crypto from "node:crypto";
+
 import closeWithGrace from "close-with-grace";
 import compression from "compression";
 import express from "express";
@@ -90,16 +91,48 @@ app.use((req, res, next) => {
   next();
 });
 
-// handle SSR requests
-app.all(
-  "/{*splat}",
-  createRequestHandler({
-    build: viteDevServer
-      ? () => viteDevServer.ssrLoadModule("virtual:react-router/server-build")
-      : // @ts-expect-error
-        await import("../build/server/index.js"),
+// Generate nonce for CSP
+app.use((_, res, next) => {
+  res.locals["cspNonce"] = crypto.randomBytes(16).toString("hex");
+  next();
+});
+
+app.use(
+  helmet.contentSecurityPolicy({
+    useDefaults: false,
+    directives: {
+      "default-src": helmet.contentSecurityPolicy.dangerouslyDisableDefaultSrc,
+      "base-uri": ["'none'"],
+      "object-src": ["'none'"],
+      "script-src": [
+        // @ts-expect-error
+        (_, res) => `'nonce-${res.locals.cspNonce}'`,
+        "'unsafe-inline'",
+        "'strict-dynamic'",
+        "https:",
+        "http:",
+      ],
+    },
   }),
 );
+
+// handle SSR requests
+if (viteDevServer) {
+  app.use(async (req, res, next) => {
+    try {
+      const source = await viteDevServer.ssrLoadModule("./server/app.ts");
+      await source["app"](req, res, next);
+    } catch (error) {
+      if (error instanceof Error) {
+        viteDevServer.ssrFixStacktrace(error);
+      }
+      next(error);
+    }
+  });
+} else {
+  // @ts-expect-error
+  app.use(await import("../build/server/index.js").then((mod) => mod.app));
+}
 
 const server = app.listen(PORT, BIND_ADDRESS, () => {
   console.log(`Express server listening at http://${BIND_ADDRESS}:${PORT}`);

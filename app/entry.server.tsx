@@ -1,4 +1,3 @@
-import crypto from "node:crypto";
 import { PassThrough } from "node:stream";
 
 import { createReadableStreamFromReadable } from "@react-router/node";
@@ -8,6 +7,7 @@ import { renderToPipeableStream } from "react-dom/server";
 import type { EntryContext, RouterContextProvider } from "react-router";
 import { ServerRouter } from "react-router";
 import { NonceProvider } from "./contexts/nonce";
+import { cspNonceContext } from "./router-contexts/csp-nonce";
 
 export const streamTimeout = 5_000;
 
@@ -16,19 +16,8 @@ export default function handleRequest(
   responseStatusCode: number,
   responseHeaders: Headers,
   routerContext: EntryContext,
-  _loadContext: RouterContextProvider,
+  loadContext: RouterContextProvider,
 ) {
-  const nonce = crypto.randomBytes(16).toString("hex");
-
-  responseHeaders.set(
-    "Content-Security-Policy",
-    [
-      "base-uri 'none'",
-      "object-src 'none'",
-      `script-src 'nonce-${nonce}' 'unsafe-inline' 'strict-dynamic' https: http:`,
-    ].join("; "),
-  );
-
   // https://httpwg.org/specs/rfc9110.html#HEAD
   if (request.method.toUpperCase() === "HEAD") {
     return new Response(null, {
@@ -36,6 +25,8 @@ export default function handleRequest(
       headers: responseHeaders,
     });
   }
+
+  const nonce = loadContext.get(cspNonceContext);
 
   return new Promise((resolve, reject) => {
     let shellRendered = false;

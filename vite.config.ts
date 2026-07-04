@@ -9,6 +9,15 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
+  environments: {
+    ssr: {
+      build: {
+        rollupOptions: {
+          input: "./server/app.ts",
+        },
+      },
+    },
+  },
   plugins: [
     !process.env["VITEST"] && reactRouter(),
     environment({
