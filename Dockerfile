@@ -27,7 +27,7 @@ WORKDIR $APP_ROOT
 
 FROM base AS deps
 
-COPY --chown=appuser:appuser package.json pnpm-lock.yaml $APP_ROOT/
+COPY --chown=appuser:appuser package.json pnpm-lock.yaml pnpm-workspace.yaml $APP_ROOT/
 
 RUN pnpm install --prod --frozen-lockfile
 
@@ -39,7 +39,7 @@ FROM base AS builder
 
 ARG STAGE
 
-COPY --chown=appuser:appuser package.json pnpm-lock.yaml $APP_ROOT/
+COPY --chown=appuser:appuser package.json pnpm-lock.yaml pnpm-workspace.yaml $APP_ROOT/
 
 RUN pnpm install --frozen-lockfile
 
