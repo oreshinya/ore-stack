@@ -17,6 +17,8 @@ export async function create{{pascalCase(singular(t))}}(
   const now = new Date().toISOString();
   const record = { id, ...params, createdAt: now, updatedAt: now };
   // TODO: validate params here...
+  // const result = validate{{pascalCase(singular(t))}}(record);
+  // if (!result.success) return result;
   await c.insertInto("{{camelCase(plural(t))}}").values(record).executeTakeFirstOrThrow();
   const created = await find{{pascalCase(singular(t))}}ByIdOrThrow(c, id);
   return success(created);
@@ -28,8 +30,10 @@ export async function update{{pascalCase(singular(t))}}(
   current: {{pascalCase(singular(t))}},
 ) {
   const values = { ...params, updatedAt: new Date().toISOString() };
-  const record = { ...current, ...values };
   // TODO: validate params here...
+  // const record = { ...current, ...values };
+  // const result = validate{{pascalCase(singular(t))}}(record);
+  // if (!result.success) return result;
   await c
     .updateTable("{{camelCase(plural(t))}}")
     .set(values)
