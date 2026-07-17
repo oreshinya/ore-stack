@@ -34,7 +34,7 @@
     "express": "^5.2.1",
     "helmet": "^8.2.0",
     "isbot": "^5.1.44",
-    "kysely": "^0.29.2",
+    "kysely": "^0.29.3",
     "kysely-migration-cli": "^0.4.2",
     "morgan": "^1.11.0",
     "qs": "^6.15.3",
