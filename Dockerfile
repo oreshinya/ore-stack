@@ -10,7 +10,7 @@ RUN corepack enable \
     tini \
     ca-certificates \
     curl \
-  && curl -sfS "https://dotenvx.sh?version=1.75.0" | sh \
+  && curl -sfS "https://dotenvx.sh?version=2.14.0" | sh \
   && rm -rf /var/lib/apt/lists/*
 
 USER 10001
