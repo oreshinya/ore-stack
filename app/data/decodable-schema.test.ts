@@ -2,14 +2,6 @@ import * as v from "valibot";
 import { assert, test } from "vitest";
 import { decodeForm } from "./decodable-schema";
 
-function buildRequest(entries: Array<[string, string | File]>) {
-  const formData = new FormData();
-  for (const [key, value] of entries) {
-    formData.append(key, value);
-  }
-  return new Request("http://localhost", { method: "POST", body: formData });
-}
-
 test("decodeForm: flat fields", async () => {
   const schema = v.object({ name: v.string(), email: v.string() });
   const request = buildRequest([
@@ -152,3 +144,11 @@ test("decodeForm: duplicate keys combine into array", async () => {
   assert(result.value.tag[0] === "a");
   assert(result.value.tag[1] === "b");
 });
+
+function buildRequest(entries: Array<[string, string | File]>) {
+  const formData = new FormData();
+  for (const [key, value] of entries) {
+    formData.append(key, value);
+  }
+  return new Request("http://localhost", { method: "POST", body: formData });
+}
