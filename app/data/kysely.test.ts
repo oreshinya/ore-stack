@@ -1,94 +1,105 @@
-import { assert, test } from "vitest";
+import type { Generated } from "kysely";
+import { assert, beforeAll, test } from "vitest";
 import { db } from "~/adapters/db/client";
-import type { SampleId } from "~/adapters/db/tables/sample";
-import { generateId } from "./id";
 import { withTransaction } from "./kysely";
 import { failure, success } from "./result";
 
+const testDb = db.$extendTables<{
+  kyselyTests: { id: Generated<number>; name: string };
+}>();
+
+beforeAll(async () => {
+  await testDb.schema
+    .createTable("kysely_tests")
+    .addColumn("id", "integer", (col) => col.primaryKey().autoIncrement())
+    .addColumn("name", "text", (col) => col.notNull())
+    .execute();
+});
+
 test("withTransaction commits on success", async () => {
-  const record = buildSample("tx-commit");
-  const result = await withTransaction(db, async (trx) => {
-    await trx.insertInto("samples").values(record).execute();
-    return success(record.id);
+  const result = await withTransaction(testDb, async (trx) => {
+    await trx.insertInto("kyselyTests").values({ name: "tx-commit" }).execute();
+    return success("committed");
   });
   assert(result.success);
-  assert(result.value === record.id);
-  assert(await findSample(record.id));
+  assert(result.value === "committed");
+  assert(await findRecordByName("tx-commit"));
 });
 
 test("withTransaction rolls back on failure", async () => {
-  const record = buildSample("tx-failure");
-  const result = await withTransaction(db, async (trx) => {
-    await trx.insertInto("samples").values(record).execute();
+  const result = await withTransaction(testDb, async (trx) => {
+    await trx
+      .insertInto("kyselyTests")
+      .values({ name: "tx-failure" })
+      .execute();
     return failure("Something went wrong.");
   });
   assert(!result.success);
   assert(result.message === "Something went wrong.");
-  assert(!(await findSample(record.id)));
+  assert(!(await findRecordByName("tx-failure")));
 });
 
 test("withTransaction rolls back on thrown error", async () => {
-  const record = buildSample("tx-throw");
   let thrown: unknown;
   try {
-    await withTransaction(db, async (trx) => {
-      await trx.insertInto("samples").values(record).execute();
+    await withTransaction(testDb, async (trx) => {
+      await trx
+        .insertInto("kyselyTests")
+        .values({ name: "tx-throw" })
+        .execute();
       throw new Error("boom");
     });
   } catch (error) {
     thrown = error;
   }
   assert(thrown instanceof Error && thrown.message === "boom");
-  assert(!(await findSample(record.id)));
+  assert(!(await findRecordByName("tx-throw")));
 });
 
 test("withTransaction joins an existing transaction", async () => {
-  const outer = buildSample("tx-nest-outer");
-  const inner = buildSample("tx-nest-inner");
-  const result = await withTransaction(db, async (trx) => {
-    await trx.insertInto("samples").values(outer).execute();
+  const result = await withTransaction(testDb, async (trx) => {
+    await trx
+      .insertInto("kyselyTests")
+      .values({ name: "tx-nest-outer" })
+      .execute();
     return withTransaction(trx, async (trx2) => {
-      await trx2.insertInto("samples").values(inner).execute();
+      await trx2
+        .insertInto("kyselyTests")
+        .values({ name: "tx-nest-inner" })
+        .execute();
       return success(undefined);
     });
   });
   assert(result.success);
-  assert(await findSample(outer.id));
-  assert(await findSample(inner.id));
+  assert(await findRecordByName("tx-nest-outer"));
+  assert(await findRecordByName("tx-nest-inner"));
 });
 
 test("nested failure rolls back the whole transaction when propagated", async () => {
-  const outer = buildSample("tx-nest-fail-outer");
-  const inner = buildSample("tx-nest-fail-inner");
-  const result = await withTransaction(db, async (trx) => {
-    await trx.insertInto("samples").values(outer).execute();
+  const result = await withTransaction(testDb, async (trx) => {
+    await trx
+      .insertInto("kyselyTests")
+      .values({ name: "tx-nest-fail-outer" })
+      .execute();
     const innerResult = await withTransaction(trx, async (trx2) => {
-      await trx2.insertInto("samples").values(inner).execute();
+      await trx2
+        .insertInto("kyselyTests")
+        .values({ name: "tx-nest-fail-inner" })
+        .execute();
       return failure("Inner failed.");
     });
     if (!innerResult.success) return innerResult;
     return success(undefined);
   });
   assert(!result.success);
-  assert(!(await findSample(outer.id)));
-  assert(!(await findSample(inner.id)));
+  assert(!(await findRecordByName("tx-nest-fail-outer")));
+  assert(!(await findRecordByName("tx-nest-fail-inner")));
 });
 
-function buildSample(name: string) {
-  const now = new Date().toISOString();
-  return {
-    id: generateId<SampleId>(),
-    name,
-    active: 1 as const,
-    createdAt: now,
-    updatedAt: now,
-  };
-}
-
-async function findSample(id: SampleId) {
-  return db
-    .selectFrom("samples")
+async function findRecordByName(name: string) {
+  return testDb
+    .selectFrom("kyselyTests")
     .selectAll()
-    .where("id", "=", id)
+    .where("name", "=", name)
     .executeTakeFirst();
 }
