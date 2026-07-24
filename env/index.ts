@@ -17,7 +17,3 @@ export const DB_TOKEN = process.env["DB_TOKEN"];
 export const REDIS_URL = process.env["REDIS_URL"] || "redis://localhost:6379";
 
 export const MQ_CONCURRENCY = num(process.env["MQ_CONCURRENCY"] || "5");
-
-export const BASIC_AUTH_USER = process.env["BASIC_AUTH_USER"];
-
-export const BASIC_AUTH_PASSWORD = process.env["BASIC_AUTH_PASSWORD"];
