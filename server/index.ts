@@ -14,6 +14,7 @@ import {
   NODE_ENV,
   PORT,
 } from "~env";
+import { createMqBoard } from "~mq/board";
 import { basicAuth } from "./basic-auth";
 
 const isProduction = NODE_ENV === "production";
@@ -90,6 +91,8 @@ app.use((req, res, next) => {
   }
   next();
 });
+
+app.use("/admin/mq", createMqBoard("/admin/mq"));
 
 // Generate nonce for CSP
 app.use((_, res, next) => {

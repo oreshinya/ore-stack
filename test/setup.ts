@@ -1,6 +1,11 @@
 import * as fs from "node:fs/promises";
 import path from "node:path";
 import { FileMigrationProvider, Migrator } from "kysely/migration";
+import { vi } from "vitest";
+
+vi.mock("~mq/client", () => ({
+  enqueue: vi.fn(),
+}));
 
 const dbPath = `libsql/test-${process.env["VITEST_POOL_ID"] || "0"}.db`;
 process.env["DB_URL"] = `file:${dbPath}`;

@@ -10,6 +10,7 @@ A React Router template with structured architecture.
 
 - [React Router](https://reactrouter.com/) (Framework mode)
 - [libSQL](https://turso.tech/) + [Kysely](https://kysely.dev/)
+- [BullMQ](https://bullmq.io/) + [Valkey](https://valkey.io/)
 - [Valibot](https://valibot.dev/)
 - [Vitest](https://vitest.dev/)
 - [Biome](https://biomejs.dev/)
@@ -45,7 +46,13 @@ pnpm tsx tasks/db.ts latest
 
 ## Development
 
-### Start development server
+### Start middlewares
+
+```bash
+docker compose up
+```
+
+### Start development servers
 
 ```bash
 pnpm dev
@@ -79,12 +86,18 @@ pnpm build
 
 This creates:
 - `build/` - React Router application (built with Vite)
-- `dist/` - Server and tasks (built with esbuild)
+- `dist/` - Server, job worker and tasks (built with esbuild)
 
 ### Start server
 
 ```bash
 pnpm start:server
+```
+
+### Start job worker
+
+```bash
+pnpm start:mq
 ```
 
 ### Run tasks
