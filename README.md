@@ -11,6 +11,7 @@ A React Router template with structured architecture.
 - [React Router](https://reactrouter.com/) (Framework mode)
 - [libSQL](https://turso.tech/) + [Kysely](https://kysely.dev/)
 - [BullMQ](https://bullmq.io/) + [Valkey](https://valkey.io/)
+- [Resend](https://resend.com/)
 - [Valibot](https://valibot.dev/)
 - [Vitest](https://vitest.dev/)
 - [Biome](https://biomejs.dev/)
