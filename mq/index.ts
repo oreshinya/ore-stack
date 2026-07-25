@@ -1,9 +1,9 @@
 import { Worker } from "bullmq";
 import closeWithGrace from "close-with-grace";
 
+import { connection, QUEUE_NAME } from "~/adapters/mq/meta";
+import { registry } from "~/jobs";
 import { MQ_CONCURRENCY } from "~env";
-import { registry } from "./jobs";
-import { connection, QUEUE_NAME } from "./meta";
 import { createProcessor } from "./processor";
 
 const worker = new Worker(QUEUE_NAME, createProcessor(registry), {

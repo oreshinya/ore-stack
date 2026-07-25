@@ -1,13 +1,18 @@
 import crypto from "node:crypto";
 
+import { createBullBoard } from "@bull-board/api";
+import { BullMQAdapter } from "@bull-board/api/bullMQAdapter";
+import { ExpressAdapter } from "@bull-board/express";
 import closeWithGrace from "close-with-grace";
 import compression from "compression";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 
+import { queue } from "~/adapters/mq/queue";
 import { BIND_ADDRESS, HOST, NODE_ENV, PORT } from "~env";
-import { createMqBoard } from "~mq/board";
+
+const MQ_BOARD_PATH = "/admin/mq";
 
 const isProduction = NODE_ENV === "production";
 
@@ -80,7 +85,13 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use("/admin/mq", createMqBoard("/admin/mq"));
+const mqBoardAdapter = new ExpressAdapter();
+mqBoardAdapter.setBasePath(MQ_BOARD_PATH);
+createBullBoard({
+  queues: [new BullMQAdapter(queue)],
+  serverAdapter: mqBoardAdapter,
+});
+app.use(MQ_BOARD_PATH, mqBoardAdapter.getRouter());
 
 // Generate nonce for CSP
 app.use((_, res, next) => {

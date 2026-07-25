@@ -1,4 +1,4 @@
-import type { JobHandler } from "./job-handler";
+import type { JobHandler } from "~/adapters/mq/job-handler";
 
 export function createProcessor(registry: Record<string, JobHandler>) {
   return async (job: { name: string; data: unknown }) => {

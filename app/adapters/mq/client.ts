@@ -1,6 +1,6 @@
 import type { JobsOptions } from "bullmq";
 
-import type { JobName, JobPayload } from "./jobs";
+import type { JobName, JobPayload } from "~/jobs";
 import { queue } from "./queue";
 
 export function enqueue<T extends JobName>(

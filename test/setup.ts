@@ -3,7 +3,7 @@ import path from "node:path";
 import { FileMigrationProvider, Migrator } from "kysely/migration";
 import { vi } from "vitest";
 
-vi.mock("~mq/client", () => ({
+vi.mock("~/adapters/mq/client", () => ({
   enqueue: vi.fn(),
 }));
 

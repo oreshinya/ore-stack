@@ -1,4 +1,4 @@
-import type { JobHandler } from "../job-handler";
+import type { JobHandler } from "~/adapters/mq/job-handler";
 import { deliverMail } from "./deliver-mail";
 
 export const registry = {

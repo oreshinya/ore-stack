@@ -1,7 +1,7 @@
 import { sendMail } from "~/adapters/mailer/client";
 import type { MailComposer } from "~/adapters/mailer/mail";
+import type { JobHandler } from "~/adapters/mq/job-handler";
 import { type MailName, type MailParams, registry } from "~/mails";
-import type { JobHandler } from "../job-handler";
 
 export const deliverMail: JobHandler<
   { [K in MailName]: { mailName: K; params: MailParams<K> } }[MailName]
