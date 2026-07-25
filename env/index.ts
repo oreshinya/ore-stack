@@ -17,3 +17,7 @@ export const DB_TOKEN = process.env["DB_TOKEN"];
 export const REDIS_URL = process.env["REDIS_URL"] || "redis://localhost:6379";
 
 export const MQ_CONCURRENCY = num(process.env["MQ_CONCURRENCY"] || "5");
+
+export const RESEND_API_KEY = process.env["RESEND_API_KEY"];
+
+export const MAIL_FROM = process.env["MAIL_FROM"] || "dev@localhost";

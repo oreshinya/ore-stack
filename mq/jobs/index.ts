@@ -1,8 +1,8 @@
 import type { JobHandler } from "../job-handler";
-import { sample } from "./sample";
+import { deliverMail } from "./deliver-mail";
 
 export const registry = {
-  sample,
+  deliverMail,
 } satisfies Record<string, JobHandler>;
 
 type Registry = typeof registry;

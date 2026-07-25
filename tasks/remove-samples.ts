@@ -4,6 +4,7 @@ import * as readline from "node:readline/promises";
 
 const FILES_TO_REMOVE = [
   "app/adapters/db/tables/sample.ts",
+  "app/mails/sample.ts",
   "app/models/sample",
   "app/routes/samples",
   "migrations/20250927T062238-create-sample.ts",
@@ -16,6 +17,16 @@ const FILES_TO_UPDATE = [
     path: "app/adapters/db/database.ts",
     search: /^.*$/s,
     replace: "export interface Database {}\n",
+  },
+  {
+    path: "app/mails/index.ts",
+    search: /^import { sample } from "\.\/sample";\n/m,
+    replace: "",
+  },
+  {
+    path: "app/mails/index.ts",
+    search: /^export const registry = {\n {2}sample,\n}/m,
+    replace: "export const registry = {}",
   },
 ];
 
