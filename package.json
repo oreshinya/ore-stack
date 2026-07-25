@@ -13,7 +13,7 @@
     "build:esbuild": "tsx ./esbuild.config.ts",
     "clean": "run-p clean:*",
     "clean:rr": "rm -rf ./build",
-    "clean:dist": "rm -rf ./dist",
+    "clean:esbuild": "rm -rf ./dist",
     "typecheck": "react-router typegen && tsc",
     "typesync:run": "typesync",
     "typesync:ci": "typesync --dry=fail",
