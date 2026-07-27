@@ -28,6 +28,16 @@ const FILES_TO_UPDATE = [
     search: /^export const registry = {\n {2}sample,\n}/m,
     replace: "export const registry = {}",
   },
+  {
+    path: "app/translations/en.ts",
+    search: /^ {4}sample: \{\n[\s\S]*?\n {4}\},\n/m,
+    replace: "",
+  },
+  {
+    path: "app/translations/en.ts",
+    search: /^ {2}ui: \{\n[\s\S]*?\n {2}\},\n/m,
+    replace: "",
+  },
 ];
 
 const PICO_CSS_UPDATES = [
