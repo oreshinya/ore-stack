@@ -6,6 +6,7 @@ import { decodeForm, decodeWithLogging } from "~/data/decodable-schema";
 import { data400, res404 } from "~/data/response";
 import { updateSample } from "~/models/sample/command";
 import { findSampleById } from "~/models/sample/query";
+import { t } from "~/router-contexts/locale";
 import type { Route } from "./+types/_route";
 
 const ParamsSchema = v.object({
@@ -20,7 +21,7 @@ const FormSchema = v.object({
   ),
 });
 
-export async function action({ request, params }: Route.ActionArgs) {
+export async function action({ request, params, context }: Route.ActionArgs) {
   const paramsResult = await decodeWithLogging(ParamsSchema, params);
   if (!paramsResult.success) throw res404();
 
@@ -29,12 +30,12 @@ export async function action({ request, params }: Route.ActionArgs) {
 
   const decodeResult = await decodeForm(request, FormSchema);
   if (!decodeResult.success) {
-    return data400(decodeResult.message);
+    return data400(t(context, decodeResult.message));
   }
 
   const result = await updateSample(db, decodeResult.value, sample);
   if (!result.success) {
-    return data400(result.message);
+    return data400(t(context, result.message));
   }
 
   return redirect(`/samples/${result.value.id}`);

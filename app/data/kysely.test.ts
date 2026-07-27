@@ -27,15 +27,16 @@ test("withTransaction commits on success", async () => {
 });
 
 test("withTransaction rolls back on failure", async () => {
+  const message = { en: "Something went wrong." };
   const result = await withTransaction(testDb, async (trx) => {
     await trx
       .insertInto("kyselyTests")
       .values({ name: "tx-failure" })
       .execute();
-    return failure("Something went wrong.");
+    return failure(message);
   });
   assert(!result.success);
-  assert(result.message === "Something went wrong.");
+  assert(result.message === message);
   assert(!(await findRecordByName("tx-failure")));
 });
 
@@ -86,7 +87,7 @@ test("nested failure rolls back the whole transaction when propagated", async ()
         .insertInto("kyselyTests")
         .values({ name: "tx-nest-fail-inner" })
         .execute();
-      return failure("Inner failed.");
+      return failure({ en: "Inner failed." });
     });
     if (!innerResult.success) return innerResult;
     return success(undefined);

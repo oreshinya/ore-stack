@@ -6,6 +6,7 @@ import type {
 } from "~/adapters/db/tables/table-base";
 import { generateId } from "~/data/id";
 import { failure, success } from "~/data/result";
+import { m } from "~/translations";
 import { type Sample, validateSample } from "./entity";
 import { findSampleByIdOrThrow, findSampleByName } from "./query";
 
@@ -52,7 +53,7 @@ export async function asyncValidateSample(
 ) {
   const existing = await findSampleByName(c, params.name);
   if (existing && existing.id !== current?.id) {
-    return failure("Name already exists.");
+    return failure(m.err.sample.nameTaken);
   }
   return success(params);
 }

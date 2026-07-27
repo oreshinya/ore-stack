@@ -1,5 +1,6 @@
 import { assert, test } from "vitest";
 import { db } from "~/adapters/db/client";
+import { m } from "~/translations";
 import { createSample, updateSample } from "./command";
 
 test("createSample", async () => {
@@ -11,11 +12,11 @@ test("createSample", async () => {
 
   const result2 = await createSample(db, { name: "", active: 1 });
   assert(!result2.success);
-  assert(result2.message === "Name is required.");
+  assert(result2.message === m.err.sample.nameRequired);
 
   const result3 = await createSample(db, { name: "test", active: 1 });
   assert(!result3.success);
-  assert(result3.message === "Name already exists.");
+  assert(result3.message === m.err.sample.nameTaken);
 });
 
 test("updateSample", async () => {
@@ -35,11 +36,11 @@ test("updateSample", async () => {
 
   const result3 = await updateSample(db, { name: "", active: 0 }, sample);
   assert(!result3.success);
-  assert(result3.message === "Name is required.");
+  assert(result3.message === m.err.sample.nameRequired);
 
   const result4 = await createSample(db, { name: "test3", active: 1 });
   assert(result4.success);
   const result5 = await updateSample(db, { name: "test3" }, sample);
   assert(!result5.success);
-  assert(result5.message === "Name already exists.");
+  assert(result5.message === m.err.sample.nameTaken);
 });

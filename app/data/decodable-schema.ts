@@ -1,5 +1,6 @@
 import qs from "qs";
 import * as v from "valibot";
+import { m } from "~/translations";
 import { NODE_ENV } from "~env";
 import { failure, success } from "./result";
 
@@ -17,7 +18,8 @@ export async function decodeWithLogging<TSchema extends DecodableSchema>(
   }
   const result = await v.safeParseAsync(schema, data, { abortEarly: true });
   if (!result.success) {
-    return failure(result.issues[0].message);
+    console.warn("Decoding failed:", v.flatten(result.issues));
+    return failure(m.err.request.invalid);
   }
   if (NODE_ENV === "development") {
     console.log("After decoded: ↓");

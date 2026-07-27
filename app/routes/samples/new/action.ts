@@ -4,6 +4,7 @@ import { db } from "~/adapters/db/client";
 import { decodeForm } from "~/data/decodable-schema";
 import { data400 } from "~/data/response";
 import { createSample } from "~/models/sample/command";
+import { t } from "~/router-contexts/locale";
 import type { Route } from "./+types/_route";
 
 const FormSchema = v.object({
@@ -14,15 +15,15 @@ const FormSchema = v.object({
   ),
 });
 
-export async function action({ request }: Route.ActionArgs) {
+export async function action({ request, context }: Route.ActionArgs) {
   const decodeResult = await decodeForm(request, FormSchema);
   if (!decodeResult.success) {
-    return data400(decodeResult.message);
+    return data400(t(context, decodeResult.message));
   }
 
   const result = await createSample(db, decodeResult.value);
   if (!result.success) {
-    return data400(result.message);
+    return data400(t(context, result.message));
   }
 
   return redirect(`/samples/${result.value.id}`);
