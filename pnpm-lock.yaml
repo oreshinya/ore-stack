@@ -44,6 +44,9 @@ importers:
       helmet:
         specifier: ^8.3.0
         version: 8.3.0
+      intl-parse-accept-language:
+        specifier: ^1.0.0
+        version: 1.0.0
       isbot:
         specifier: ^5.2.1
         version: 5.2.1
@@ -70,7 +73,7 @@ importers:
         version: 8.2.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       remix-utils:
         specifier: ^10.0.0
-        version: 10.0.0(@standard-schema/spec@1.1.0)(react-router@8.2.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
+        version: 10.0.0(@standard-schema/spec@1.1.0)(intl-parse-accept-language@1.0.0)(react-router@8.2.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7)
       resend:
         specifier: ^6.18.0
         version: 6.18.0
@@ -1517,6 +1520,10 @@ packages:
   internal-slot@1.1.0:
     resolution: {integrity: sha512-4gd7VpWNQNB4UKKCFFVcp1AVv+FMOgs9NKzjHKusc8jTMhd5eL1NqQqOpE0KzMds804/yHlglp3uxgluOqAPLw==}
     engines: {node: '>= 0.4'}
+
+  intl-parse-accept-language@1.0.0:
+    resolution: {integrity: sha512-YFMSV91JNBOSjw1cOfw2tup6hDP7mkz+2AUV7W1L1AM6ntgI75qC1ZeFpjPGMrWp+upmBRTX2fJWQ8c7jsUWpA==}
+    engines: {node: '>=14'}
 
   ioredis@5.11.1:
     resolution: {integrity: sha512-ehuGcf94bQXhfagULNXrJdfnWO38v070jxSx/qE87Kjzmu2fU7ro5EFAb+OPituLqgfyuQaym5DlrNydW2sJ9A==}
@@ -4170,6 +4177,8 @@ snapshots:
       hasown: 2.0.2
       side-channel: 1.1.1
 
+  intl-parse-accept-language@1.0.0: {}
+
   ioredis@5.11.1:
     dependencies:
       '@ioredis/commands': 1.10.0
@@ -4799,9 +4808,10 @@ snapshots:
       fs-extra: 11.3.3
       minimatch: 10.1.1
 
-  remix-utils@10.0.0(@standard-schema/spec@1.1.0)(react-router@8.2.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7):
+  remix-utils@10.0.0(@standard-schema/spec@1.1.0)(intl-parse-accept-language@1.0.0)(react-router@8.2.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react@19.2.7):
     optionalDependencies:
       '@standard-schema/spec': 1.1.0
+      intl-parse-accept-language: 1.0.0
       react: 19.2.7
       react-router: 8.2.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
 

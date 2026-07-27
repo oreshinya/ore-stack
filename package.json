@@ -38,6 +38,7 @@
     "compression": "^1.8.1",
     "express": "^5.2.1",
     "helmet": "^8.3.0",
+    "intl-parse-accept-language": "^1.0.0",
     "isbot": "^5.2.1",
     "kysely": "^0.29.3",
     "kysely-migration-cli": "^0.4.2",

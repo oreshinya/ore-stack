@@ -118,6 +118,11 @@ app.use(
   }),
 );
 
+app.use((_, res, next) => {
+  res.vary("Accept-Language");
+  next();
+});
+
 // handle SSR requests
 if (viteDevServer) {
   app.use(async (req, res, next) => {

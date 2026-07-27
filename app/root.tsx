@@ -12,13 +12,16 @@ import type { Route } from "./+types/root";
 import { useHook } from "./hook";
 import styles from "./styles.module.css";
 
+export { loader } from "./loader";
+export { middleware } from "./middleware";
+
 const cx = classNames.bind(styles);
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { nonce, isPending } = useHook();
+  const { nonce, isPending, locale } = useHook();
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
