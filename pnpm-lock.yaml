@@ -16,7 +16,7 @@ importers:
         version: 8.1.2
       '@libsql/kysely-libsql':
         specifier: ^0.4.1
-        version: 0.4.1(kysely@0.29.3)
+        version: 0.4.1(kysely@0.29.4)
       '@react-router/express':
         specifier: ^8.2.0
         version: 8.2.0(express@5.2.1)(react-router@8.2.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)
@@ -51,8 +51,8 @@ importers:
         specifier: ^5.2.1
         version: 5.2.1
       kysely:
-        specifier: ^0.29.3
-        version: 0.29.3
+        specifier: ^0.29.4
+        version: 0.29.4
       kysely-migration-cli:
         specifier: ^0.4.2
         version: 0.4.2
@@ -1690,8 +1690,8 @@ packages:
     resolution: {integrity: sha512-904MSUdzkdxl+k3C67ogvP6ogPOEr0D6ZZDtxAmDeIHEJxZAA+eC+TLAcJt3HQABTPetwsW3pj6y1MPmaveQUg==}
     hasBin: true
 
-  kysely@0.29.3:
-    resolution: {integrity: sha512-VHtBdW6XB/pgoTSqraM3UAa2rYoYdNXqnNPpX+8XXP+cwYbVEFuAp3HyPt1vpNfU9l7Y2kpUrA9QDPsy8uUqOQ==}
+  kysely@0.29.4:
+    resolution: {integrity: sha512-y5mVgQNkMbs1eK9Xyc0pmNdabN2wHhRYY/5r4W5HrUT1rYCEPeVNSj1RUJeSDKT3U0p+mXCvLgkrFuIafYI6BA==}
     engines: {node: '>=22.0.0'}
 
   layerr@3.0.0:
@@ -3152,10 +3152,10 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@libsql/kysely-libsql@0.4.1(kysely@0.29.3)':
+  '@libsql/kysely-libsql@0.4.1(kysely@0.29.4)':
     dependencies:
       '@libsql/client': 0.8.1
-      kysely: 0.29.3
+      kysely: 0.29.4
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -4344,7 +4344,7 @@ snapshots:
       '@commander-js/extra-typings': 11.1.0(commander@11.1.0)
       commander: 11.1.0
 
-  kysely@0.29.3: {}
+  kysely@0.29.4: {}
 
   layerr@3.0.0: {}
 
