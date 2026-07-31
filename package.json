@@ -32,7 +32,7 @@
     "@react-router/express": "^8.2.0",
     "@react-router/node": "^8.2.0",
     "@react-router/serve": "^8.2.0",
-    "bullmq": "^5.80.10",
+    "bullmq": "^5.81.1",
     "classnames": "^2.5.1",
     "close-with-grace": "^2.5.0",
     "compression": "^1.8.1",
