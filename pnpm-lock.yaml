@@ -27,8 +27,8 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0(react-router@8.2.0(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(typescript@6.0.3)
       bullmq:
-        specifier: ^5.80.10
-        version: 5.80.10
+        specifier: ^6.3.1
+        version: 6.3.1(ioredis@5.11.1)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -1028,12 +1028,21 @@ packages:
   buffer-from@1.1.2:
     resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
 
-  bullmq@5.80.10:
-    resolution: {integrity: sha512-lhfWJ3ojsU4FGjhV5b+CRHT3nFx9TX6sIsoGQGCIPoYvTmBeRmJ4sOYWTx0l8gdKnuEF3e5GfuYVLSAs97VvUw==}
-    engines: {node: '>=12.22.0'}
+  bullmq@6.3.1:
+    resolution: {integrity: sha512-dxFRQtN42H1SWpODKr1eHqFsgYPAWOKiZDihatP8Skdd/j8e0x77AP//TUqGMVuUmjHf/eNMa2e+g6bidc4oYg==}
+    engines: {node: '>=14.17.0'}
     peerDependencies:
+      bullmq-otel: '>=2.0.0'
+      ioredis: '>=5.0.0'
+      pg: '>=8.0.0'
       redis: '>=5.0.0'
     peerDependenciesMeta:
+      bullmq-otel:
+        optional: true
+      ioredis:
+        optional: true
+      pg:
+        optional: true
       redis:
         optional: true
 
@@ -1149,9 +1158,9 @@ packages:
     resolution: {integrity: sha512-yki5XnKuf750l50uGTllt6kKILY4nQ1eNIQatoXEByZ5dWgnKqbnqmTrBE5B4N7lrMJKQ2ytWMiTO2o0v6Ew/w==}
     engines: {node: '>= 0.6'}
 
-  cron-parser@4.9.0:
-    resolution: {integrity: sha512-p0SaNjrHOnQeR8/VnfGbmg9te2kfyYSQ7Sc/j/6DtPL3JQvKxmjO9TSjNFpujqV3vEYYBvNNvXSxzyksBWAx1Q==}
-    engines: {node: '>=12.0.0'}
+  cron-parser@5.10.0:
+    resolution: {integrity: sha512-izNAxJyRWUP8ljBoDSub5WyrVOUlT4SLGShswE7eoRBpp6QUsSycYxLBMJlbshgPBMcPT/nrfgjNY2918ayv2A==}
+    engines: {node: '>=18'}
 
   cross-spawn@6.0.6:
     resolution: {integrity: sha512-VqCUuhcd1iB+dsv8gxPttb5iZh/D0iubSP21g36KXdEuf6I5JiioesUVjpCdHV9MZRUfVFlvwtIUyPfxo5trtw==}
@@ -1900,8 +1909,8 @@ packages:
     resolution: {integrity: sha512-4kmO/MdyUIkLIvTPr8VHLil4AtoKIoniWPIEk5+CDy0xnWC84azhSFmuJ7PxZdsYtiP5kEeQsORAVIeMgxT+Hw==}
     hasBin: true
 
-  msgpackr@2.0.4:
-    resolution: {integrity: sha512-o1C5KRmuRt+apqMr1HuGSqWStZoRBUpEsCsl15uM9VdAF1qHLtvMOU2En747EnTyEl6c4pzPewRMFF31s1CNbA==}
+  msgpackr@2.0.5:
+    resolution: {integrity: sha512-cef05H/dSYpLpqp3sj/qyZh5vhUYCalnaLO7j1yOmpsR0y/XwLVtK7r5gn+U/F7CTEfMowcGhlUQJDLcLf7jcA==}
 
   nanoid@3.3.15:
     resolution: {integrity: sha512-y7Wygv/7mEOvxTuEQDB8StXdMRBWf1kR/tlhAzBRUFkB2jfcLOAxO/SHmOO2zgz1pVgK29/kyupn059/bCHdjA==}
@@ -3071,7 +3080,8 @@ snapshots:
   '@esbuild/win32-x64@0.28.1':
     optional: true
 
-  '@ioredis/commands@1.10.0': {}
+  '@ioredis/commands@1.10.0':
+    optional: true
 
   '@isaacs/balanced-match@4.0.1': {}
 
@@ -3588,16 +3598,15 @@ snapshots:
 
   buffer-from@1.1.2: {}
 
-  bullmq@5.80.10:
+  bullmq@6.3.1(ioredis@5.11.1):
     dependencies:
-      cron-parser: 4.9.0
-      ioredis: 5.11.1
-      msgpackr: 2.0.4
+      cron-parser: 5.10.0
+      msgpackr: 2.0.5
       node-abort-controller: 3.1.1
       semver: 7.8.5
       tslib: 2.8.1
-    transitivePeerDependencies:
-      - supports-color
+    optionalDependencies:
+      ioredis: 5.11.1
 
   bytes@3.1.2: {}
 
@@ -3662,7 +3671,8 @@ snapshots:
 
   close-with-grace@2.5.0: {}
 
-  cluster-key-slot@1.1.1: {}
+  cluster-key-slot@1.1.1:
+    optional: true
 
   color-convert@1.9.3:
     dependencies:
@@ -3710,7 +3720,7 @@ snapshots:
 
   cookie@0.7.2: {}
 
-  cron-parser@4.9.0:
+  cron-parser@5.10.0:
     dependencies:
       luxon: 3.7.2
 
@@ -3772,7 +3782,8 @@ snapshots:
       has-property-descriptors: 1.0.2
       object-keys: 1.1.1
 
-  denque@2.1.0: {}
+  denque@2.1.0:
+    optional: true
 
   depd@2.0.0: {}
 
@@ -4190,6 +4201,7 @@ snapshots:
       standard-as-callback: 2.1.0
     transitivePeerDependencies:
       - supports-color
+    optional: true
 
   ip-address@10.1.0: {}
 
@@ -4548,7 +4560,7 @@ snapshots:
       '@msgpackr-extract/msgpackr-extract-win32-x64': 3.0.4
     optional: true
 
-  msgpackr@2.0.4:
+  msgpackr@2.0.5:
     optionalDependencies:
       msgpackr-extract: 3.0.4
 
@@ -4773,7 +4785,8 @@ snapshots:
 
   readdirp@5.0.0: {}
 
-  redis-errors@1.2.0: {}
+  redis-errors@1.2.0:
+    optional: true
 
   redis-info@3.1.0:
     dependencies:
@@ -4782,6 +4795,7 @@ snapshots:
   redis-parser@3.0.0:
     dependencies:
       redis-errors: 1.2.0
+    optional: true
 
   reflect.getprototypeof@1.0.10:
     dependencies:
@@ -5046,7 +5060,8 @@ snapshots:
 
   stackback@0.0.2: {}
 
-  standard-as-callback@2.1.0: {}
+  standard-as-callback@2.1.0:
+    optional: true
 
   standardwebhooks@1.0.0:
     dependencies:
