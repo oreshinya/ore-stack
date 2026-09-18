@@ -12,8 +12,8 @@ importers:
         specifier: ^8.1.2
         version: 8.1.2(@bull-board/ui@8.1.2)
       '@bull-board/express':
-        specifier: ^8.1.2
-        version: 8.1.2
+        specifier: ^9.10.0
+        version: 9.10.0(bullmq@5.80.10)(typescript@6.0.3)
       '@libsql/kysely-libsql':
         specifier: ^0.4.1
         version: 0.4.1(kysely@0.29.3)
@@ -338,11 +338,26 @@ packages:
     peerDependencies:
       '@bull-board/ui': 8.1.2
 
-  '@bull-board/express@8.1.2':
-    resolution: {integrity: sha512-IldpQLXlezJRzk1BVNJjH+Oi3NBRcBopq9bI2ndLs0R+ySK1ux+TtGDUW+eX2fl0wEHwSpuUgPBAJID695zohA==}
+  '@bull-board/api@9.10.0':
+    resolution: {integrity: sha512-BbW7ZleJ+QAR3Ayu+u2VlgwSYoFcteY6BhS4iPsHMOw9Laohfx29lPEgdrGNZNHS7ORgxcMqcfMeq+hjqxgx5g==}
+    peerDependencies:
+      '@bull-board/ui': 9.10.0
+      bull: ^4.16.5
+      bullmq: ^5.56.0 || ^6.0.0
+    peerDependenciesMeta:
+      bull:
+        optional: true
+      bullmq:
+        optional: true
+
+  '@bull-board/express@9.10.0':
+    resolution: {integrity: sha512-xm8TEBpEa4IL9m/51nHEDt8iKTVGhn+DLWiU+fGJeCVYDH4q8IXh7olodAxkTTCcSg0DmpIUYjmhYdqTcjrNEA==}
 
   '@bull-board/ui@8.1.2':
     resolution: {integrity: sha512-gC5u9XUSiRile4/VC+WHXtaPvfZV4Mrrz8MSvPe32Hjl2MXStfSuEOb+9Tw/WMpNSZ442tGpFZLz0RDh1Yo3jg==}
+
+  '@bull-board/ui@9.10.0':
+    resolution: {integrity: sha512-yKZ1o0wIxfGzywgEiLtvYMNLiAmtGDSJTZqdyV7a4fWkKQ5Ke+wCs//o69oaZLQHYNlwYF3e83wIeF+Pikurkg==}
 
   '@commander-js/extra-typings@11.1.0':
     resolution: {integrity: sha512-GuvZ38d23H+7Tz2C9DhzCepivsOsky03s5NI+KCy7ke1FNUvsJ2oO47scQ9YaGGhgjgNW5OYYNSADmbjcSoIhw==}
@@ -1152,6 +1167,7 @@ packages:
   cron-parser@4.9.0:
     resolution: {integrity: sha512-p0SaNjrHOnQeR8/VnfGbmg9te2kfyYSQ7Sc/j/6DtPL3JQvKxmjO9TSjNFpujqV3vEYYBvNNvXSxzyksBWAx1Q==}
     engines: {node: '>=12.0.0'}
+    deprecated: v4 is no longer maintained, upgrade to v5
 
   cross-spawn@6.0.6:
     resolution: {integrity: sha512-VqCUuhcd1iB+dsv8gxPttb5iZh/D0iubSP21g36KXdEuf6I5JiioesUVjpCdHV9MZRUfVFlvwtIUyPfxo5trtw==}
@@ -2560,6 +2576,14 @@ packages:
       typescript:
         optional: true
 
+  valibot@1.5.0:
+    resolution: {integrity: sha512-nil6AkP2TChWL43Z5uJ6GTxX01CUA+g8LWUM+N/rB9NBbkUMaUsi9PUNzlUPgoKASgmx9f7eGOYpJ04/fSa6FQ==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
 
@@ -2960,18 +2984,39 @@ snapshots:
       '@bull-board/ui': 8.1.2
       redis-info: 3.1.0
 
-  '@bull-board/express@8.1.2':
+  '@bull-board/api@9.10.0(@bull-board/ui@9.10.0(bullmq@5.80.10)(typescript@6.0.3))(bullmq@5.80.10)(typescript@6.0.3)':
     dependencies:
-      '@bull-board/api': 8.1.2(@bull-board/ui@8.1.2)
-      '@bull-board/ui': 8.1.2
+      '@bull-board/ui': 9.10.0(bullmq@5.80.10)(typescript@6.0.3)
+      redis-info: 3.1.0
+      valibot: 1.5.0(typescript@6.0.3)
+    optionalDependencies:
+      bullmq: 5.80.10
+    transitivePeerDependencies:
+      - typescript
+
+  '@bull-board/express@9.10.0(bullmq@5.80.10)(typescript@6.0.3)':
+    dependencies:
+      '@bull-board/api': 9.10.0(@bull-board/ui@9.10.0(bullmq@5.80.10)(typescript@6.0.3))(bullmq@5.80.10)(typescript@6.0.3)
+      '@bull-board/ui': 9.10.0(bullmq@5.80.10)(typescript@6.0.3)
       ejs: 6.0.1
       express: 5.2.1
     transitivePeerDependencies:
+      - bull
+      - bullmq
       - supports-color
+      - typescript
 
   '@bull-board/ui@8.1.2':
     dependencies:
       '@bull-board/api': 8.1.2(@bull-board/ui@8.1.2)
+
+  '@bull-board/ui@9.10.0(bullmq@5.80.10)(typescript@6.0.3)':
+    dependencies:
+      '@bull-board/api': 9.10.0(@bull-board/ui@9.10.0(bullmq@5.80.10)(typescript@6.0.3))(bullmq@5.80.10)(typescript@6.0.3)
+    transitivePeerDependencies:
+      - bull
+      - bullmq
+      - typescript
 
   '@commander-js/extra-typings@11.1.0(commander@11.1.0)':
     dependencies:
@@ -5245,6 +5290,10 @@ snapshots:
       picocolors: 1.1.1
 
   valibot@1.4.2(typescript@6.0.3):
+    optionalDependencies:
+      typescript: 6.0.3
+
+  valibot@1.5.0(typescript@6.0.3):
     optionalDependencies:
       typescript: 6.0.3
 
