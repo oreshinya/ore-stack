@@ -2,7 +2,7 @@
 import { reactRouter } from "@react-router/dev/vite";
 import { defineConfig } from "vite";
 import environment from "vite-plugin-environment";
-import { ASSET_HOST } from "./env";
+import { ASSET_HOST } from "./env/index.ts";
 
 export default defineConfig({
   base: ASSET_HOST,
