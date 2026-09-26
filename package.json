@@ -4,13 +4,13 @@
   "type": "module",
   "scripts": {
     "dev": "run-p dev:*",
-    "dev:server": "tsx --conditions=development ./server/index.ts",
-    "dev:mq": "tsx watch ./mq/index.ts",
+    "dev:server": "node --conditions=development --import tsx ./server/index.ts",
+    "dev:mq": "node --watch --import tsx ./mq/index.ts",
     "start:server": "node ./dist/server-index.js",
     "start:mq": "node ./dist/mq-index.js",
     "build": "run-p build:*",
     "build:rr": "react-router build",
-    "build:esbuild": "tsx ./esbuild.config.ts",
+    "build:esbuild": "node --import tsx ./esbuild.config.ts",
     "clean": "run-p clean:*",
     "clean:rr": "rm -rf ./build",
     "clean:esbuild": "rm -rf ./dist",
@@ -20,10 +20,10 @@
     "lint:fix": "biome check --write .",
     "lint:ci": "biome ci .",
     "test": "NODE_ENV=test vitest run",
-    "db:up": "tsx tasks/db.ts up && tsx tasks/dump-schema.ts",
-    "db:down": "tsx tasks/db.ts down && tsx tasks/dump-schema.ts",
-    "db:create": "tsx tasks/db.ts create",
-    "db:latest": "tsx tasks/db.ts latest && tsx tasks/dump-schema.ts"
+    "db:up": "node --import tsx tasks/db.ts up && node --import tsx tasks/dump-schema.ts",
+    "db:down": "node --import tsx tasks/db.ts down && node --import tsx tasks/dump-schema.ts",
+    "db:create": "node --import tsx tasks/db.ts create",
+    "db:latest": "node --import tsx tasks/db.ts latest && node --import tsx tasks/dump-schema.ts"
   },
   "dependencies": {
     "@bull-board/api": "^9.10.1",

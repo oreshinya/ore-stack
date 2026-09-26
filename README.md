@@ -36,13 +36,13 @@ pnpm install
 ### Remove sample code
 
 ```bash
-pnpm tsx tasks/remove-samples.ts
+node --import tsx tasks/remove-samples.ts
 ```
 
 ### Run database migrations
 
 ```bash
-pnpm tsx tasks/db.ts latest
+pnpm db:latest
 ```
 
 ## Development
