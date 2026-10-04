@@ -10,6 +10,3 @@
 
 # libSQL
 /libsql/*.db
-
-# Claude Code
-.claude/
