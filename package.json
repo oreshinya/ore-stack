@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "@bull-board/api": "^9.10.1",
-    "@bull-board/express": "^9.10.1",
+    "@bull-board/express": "^9.10.2",
     "@libsql/kysely-libsql": "^0.4.1",
     "@react-router/express": "^8.4.0",
     "@react-router/node": "^8.4.0",
