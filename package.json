@@ -26,7 +26,7 @@
     "db:latest": "node --import tsx tasks/db.ts latest && node --import tsx tasks/dump-schema.ts"
   },
   "dependencies": {
-    "@bull-board/api": "^9.10.1",
+    "@bull-board/api": "^9.10.4",
     "@bull-board/express": "^9.10.1",
     "@libsql/kysely-libsql": "^0.4.1",
     "@react-router/express": "^8.4.0",
