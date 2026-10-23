@@ -43,10 +43,6 @@ if (viteDevServer) {
 
 app.use(morgan("tiny"));
 
-app.get("/health", (_, res) => {
-  return res.sendStatus(200);
-});
-
 app.use(
   helmet({
     contentSecurityPolicy: false,
