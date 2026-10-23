@@ -44,7 +44,7 @@
     "kysely": "^0.29.6",
     "kysely-migration-cli": "^0.4.2",
     "morgan": "^1.12.1",
-    "qs": "^6.16.0",
+    "qs": "^6.16.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-router": "^8.4.0",
