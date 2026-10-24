@@ -29,6 +29,16 @@
       }
     }
   },
+  "yaml": {
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "markdown": {
+    "formatter": {
+      "enabled": false
+    }
+  },
   "css": {
     "parser": {
       "cssModules": true

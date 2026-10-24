@@ -1,4 +1,4 @@
-ARG NODE_VERSION=24.21.0
+ARG NODE_VERSION=24.22.1
 
 # ---
 
@@ -10,7 +10,7 @@ RUN corepack enable \
     tini \
     ca-certificates \
     curl \
-  && curl -sfS "https://dotenvx.sh?version=2.30.0" | sh \
+  && curl -sfS "https://dotenvx.sh?version=2.38.2" | sh \
   && rm -rf /var/lib/apt/lists/*
 
 USER 10001
